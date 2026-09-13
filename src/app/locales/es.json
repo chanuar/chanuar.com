@@ -46,6 +46,8 @@
     "technologiesList": "Tecnologías que utilizo"
   },
   "contactForm": {
+    "requiredFields": "Todos los campos son obligatorios.",
+    "messageHint": "Entre {{min}} y {{max}} caracteres.",
     "name": "Nombre",
     "email": "Email",
     "message": "Mensaje",

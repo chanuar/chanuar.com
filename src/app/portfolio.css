@@ -611,6 +611,17 @@ body.portfolio-page * {
     border: 0;
   }
 
+  .portfolio-contact-form__hint {
+    margin: 8px 0 0;
+    color: var(--portfolio-muted);
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .portfolio-contact-form > .portfolio-contact-form__hint {
+    margin: 0 0 24px;
+  }
+
   .portfolio-contact-form__field {
     min-width: 0;
   }

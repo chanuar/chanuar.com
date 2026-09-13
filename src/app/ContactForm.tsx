@@ -4,6 +4,9 @@ import { useTranslation } from 'react-i18next';
 
 type SubmissionStatus = 'idle' | 'sending' | 'success' | 'error';
 
+const MESSAGE_MIN_LENGTH = 10;
+const MESSAGE_MAX_LENGTH = 2000;
+
 export function ContactForm() {
   const { t } = useTranslation();
   const [status, setStatus] = useState<SubmissionStatus>('idle');
@@ -41,7 +44,11 @@ export function ContactForm() {
       onSubmit={(event) => void handleSubmit(event)}
       onChange={() => status !== 'sending' && setStatus('idle')}
       aria-busy={status === 'sending'}
+      aria-describedby="contact-requirements"
     >
+      <p id="contact-requirements" className="portfolio-contact-form__hint">
+        {t('contactForm.requiredFields')}
+      </p>
       <fieldset disabled={status === 'sending'}>
         <div className="portfolio-contact-form__field">
           <label htmlFor="contact-name">{t('contactForm.name')}</label>
@@ -71,10 +78,14 @@ export function ContactForm() {
             id="contact-message"
             name="message"
             rows={5}
-            minLength={10}
-            maxLength={2000}
+            minLength={MESSAGE_MIN_LENGTH}
+            maxLength={MESSAGE_MAX_LENGTH}
+            aria-describedby="contact-message-hint"
             required
           />
+          <p id="contact-message-hint" className="portfolio-contact-form__hint">
+            {t('contactForm.messageHint', { min: MESSAGE_MIN_LENGTH, max: MESSAGE_MAX_LENGTH })}
+          </p>
         </div>
         <div className="portfolio-contact-form__actions">
           <div className="portfolio-contact-form__feedback" aria-live="polite">

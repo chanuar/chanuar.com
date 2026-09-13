@@ -59,6 +59,10 @@ describe('portfolio surfaces', () => {
     await user.click(screen.getByRole('link', { name: 'EN' }));
 
     expect(await screen.findByText('Full-stack developer')).toBeVisible();
+    expect(screen.getByText('All fields are required.')).toBeVisible();
+    expect(screen.getByLabelText('Message')).toHaveAccessibleDescription(
+      'Between 10 and 2000 characters.',
+    );
     expect(screen.getByRole('link', { name: '01 Projects' })).toBeVisible();
     expect(screen.getByRole('link', { name: '01 Projects' })).toHaveAttribute(
       'href',

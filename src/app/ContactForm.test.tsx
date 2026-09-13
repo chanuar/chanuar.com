@@ -41,6 +41,10 @@ describe('ContactForm', () => {
   it('sends the EmailJS form and confirms success', async () => {
     sendForm.mockResolvedValue({ status: 200, text: 'OK' });
     render(<ContactForm />);
+    expect(screen.getByText('Todos los campos son obligatorios.')).toBeVisible();
+    expect(screen.getByLabelText('Mensaje')).toHaveAccessibleDescription(
+      'Entre 10 y 2000 caracteres.',
+    );
     const user = await completeForm();
 
     await user.click(screen.getByRole('button', { name: 'Enviar mensaje' }));
