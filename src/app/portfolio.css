@@ -140,11 +140,6 @@ body.portfolio-page * {
     transform: translateX(100%);
   }
 
-  .portfolio-language:has(a:focus-visible) {
-    outline: 3px solid var(--portfolio-accent);
-    outline-offset: 4px;
-  }
-
   .portfolio-language:hover {
     border-color: var(--portfolio-accent);
   }
@@ -158,7 +153,8 @@ body.portfolio-page * {
   }
 
   .portfolio-language a:focus-visible {
-    outline: none;
+    outline-color: currentcolor;
+    outline-offset: -3px;
   }
 
   .portfolio-language a[aria-current='page'] {
