@@ -1,4 +1,4 @@
-import { createBrowserRouter, type RouteObject } from 'react-router';
+import type { RouteObject } from 'react-router';
 import { Home } from './Home';
 import { NotFound } from './NotFound';
 import { PortfolioShell } from './PortfolioShell';
@@ -33,5 +33,3 @@ export const routes: RouteObject[] = [
     ],
   },
 ];
-
-export const router = createBrowserRouter(routes);

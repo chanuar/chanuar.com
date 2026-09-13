@@ -68,7 +68,7 @@ export function PortfolioShell() {
               </div>
               <ContactForm />
               <div className="portfolio-footer__meta">
-                <span>© {new Date().getFullYear()} Carlos Chanuar</span>
+                <span suppressHydrationWarning>© {new Date().getFullYear()} Carlos Chanuar</span>
                 <a href="https://github.com/chanuar" rel="me">
                   GitHub
                 </a>

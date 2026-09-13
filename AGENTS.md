@@ -8,6 +8,9 @@ with Vite, React 19, React Router 7 Data Mode, and strict TypeScript.
 - `src/app/` owns startup, routing, metadata, body environments, the portfolio
   home, and the portfolio-styled 404 surface.
 - `public/` owns static assets, `robots.txt`, and `sitemap.xml`.
+- `prerender.mjs` and `src/app/prerender.tsx` generate the public HTML at build
+  time from the shared router. Keep `router.tsx` safe to import without a DOM;
+  `main.tsx` creates the browser router and hydrates the generated content.
 - Public portfolio routes are `/` (Spanish) and `/en` (English). Unknown routes must render the
   portfolio-styled 404 and remain `noindex`.
 - Keep the portfolio identity in `src/app/Home.tsx`, root metadata, and the
@@ -68,7 +71,8 @@ unknown direct requests.
 - `npm run typecheck` runs strict TypeScript checks.
 - `npm test` runs Vitest once in jsdom; `npm run test:watch` watches affected
   tests.
-- `npm run build` type-checks and builds the portfolio and 404 entry points.
+- `npm run build` type-checks, builds, and prerenders the portfolio and 404
+  entry points. Deploy `dist/`; production does not require a rendering server.
 
 Place Vitest and Testing Library tests beside the code as `*.test.ts` or
 `*.test.tsx`. Prefer user-visible behavior and accessibility-oriented queries.

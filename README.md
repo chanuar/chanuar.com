@@ -26,6 +26,20 @@ This repository is just for **chanuar.com**.
 
 I'm continuing to add content and explore animations with GSAP.
 
+## Building and deployment
+
+`npm run build` runs TypeScript, builds with Vite, then prerenders `/`, `/en`, and
+the shared 404 using the same React components and translations. Deploy `dist/`
+to Cloudflare Pages with that build command; no production Node server is needed.
+
+The generated HTML includes content, links, and route metadata. React hydrates
+it in the browser, then enables the contact form and GSAP. Without JavaScript,
+visitors can read the portfolio, change languages, and use the email link.
+
+Keep `404.html` and `public/_redirects` in the output: Cloudflare must return a
+real 404 for unknown URLs and redirect `/en/` to `/en`. `npm run dev` continues
+to use the static HTML entry metadata and client rendering.
+
 ## 🛠️ Tech stack
 
 - React 19

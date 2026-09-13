@@ -1,5 +1,5 @@
 import emailjs from '@emailjs/browser';
-import { useState, type SubmitEvent } from 'react';
+import { useState, useSyncExternalStore, type SubmitEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 
 type SubmissionStatus = 'idle' | 'sending' | 'success' | 'error';
@@ -7,9 +7,16 @@ type SubmissionStatus = 'idle' | 'sending' | 'success' | 'error';
 const MESSAGE_MIN_LENGTH = 10;
 const MESSAGE_MAX_LENGTH = 2000;
 
+const subscribe = () => () => {};
+
 export function ContactForm() {
   const { t } = useTranslation();
   const [status, setStatus] = useState<SubmissionStatus>('idle');
+  const isHydrated = useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false,
+  );
   const serviceId: unknown = import.meta.env.VITE_EMAILJS_SERVICE_ID;
   const templateId: unknown = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
   const publicKey: unknown = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
@@ -49,7 +56,7 @@ export function ContactForm() {
       <p id="contact-requirements" className="portfolio-contact-form__hint">
         {t('contactForm.requiredFields')}
       </p>
-      <fieldset disabled={status === 'sending'}>
+      <fieldset disabled={!isHydrated || status === 'sending'}>
         <div className="portfolio-contact-form__field">
           <label htmlFor="contact-name">{t('contactForm.name')}</label>
           <input
@@ -111,11 +118,11 @@ export function ContactForm() {
         </div>
         <div className="portfolio-contact-form__actions">
           <div className="portfolio-contact-form__feedback" aria-live="polite">
-            {!isConfigured && <p>{t('contactForm.unavailable')}</p>}
+            {(!isHydrated || !isConfigured) && <p>{t('contactForm.unavailable')}</p>}
             {status === 'success' && <p role="status">{t('contactForm.success')}</p>}
             {status === 'error' && <p role="alert">{t('contactForm.error')}</p>}
           </div>
-          <button type="submit" disabled={!isConfigured || status === 'sending'}>
+          <button type="submit" disabled={!isHydrated || !isConfigured || status === 'sending'}>
             {status === 'sending' ? t('contactForm.sending') : t('contactForm.submit')}
             <span aria-hidden="true">↗</span>
           </button>

@@ -169,7 +169,7 @@ export function Home() {
             <ul aria-label={t('home.technologiesList')}>
               {TECHNOLOGIES.map(([name, icon]) => (
                 <li key={name}>
-                  <img src={`/icons/${icon}`} alt="" width="72" height="72" />
+                  <img src={`/icons/${icon}`} alt="" width="72" height="72" loading="lazy" />
                   <span className="portfolio-technology__name">{name}</span>
                 </li>
               ))}
@@ -177,7 +177,7 @@ export function Home() {
             <ul aria-hidden="true">
               {TECHNOLOGIES.map(([name, icon]) => (
                 <li key={name}>
-                  <img src={`/icons/${icon}`} alt="" width="72" height="72" />
+                  <img src={`/icons/${icon}`} alt="" width="72" height="72" loading="lazy" />
                 </li>
               ))}
             </ul>

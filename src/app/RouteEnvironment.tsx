@@ -48,7 +48,7 @@ export function RouteEnvironment() {
       <meta property="og:type" content="website" />
       <meta property="og:locale" content={language === 'en' ? 'en_US' : 'es_ES'} />
       <meta property="og:site_name" content="chanuar.com" />
-      <meta property="og:url" content={pageUrl} />
+      {canonicalPath && <meta property="og:url" content={pageUrl} />}
       <meta property="og:image" content={image} />
       <meta property="og:image:width" content={name === 'notFound' ? '64' : '1536'} />
       <meta property="og:image:height" content={name === 'notFound' ? '64' : '1024'} />
