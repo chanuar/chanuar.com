@@ -58,6 +58,32 @@ export function RouteEnvironment() {
       <meta name="twitter:image" content={image} />
       {name === 'notFound' && <meta name="robots" content="noindex, nofollow" />}
       {canonicalPath && <link rel="canonical" href={pageUrl} />}
+      {name === 'home' && (
+        <>
+          <link rel="alternate" hrefLang="es" href="https://chanuar.com/" />
+          <link rel="alternate" hrefLang="en" href="https://chanuar.com/en" />
+          <link rel="alternate" hrefLang="x-default" href="https://chanuar.com/" />
+          <script type="application/ld+json">
+            {JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'ProfilePage',
+              url: pageUrl,
+              mainEntity: {
+                '@type': 'Person',
+                name: 'Carlos Alberto Chanuar Martínez',
+                alternateName: '@chanuar',
+                url: 'https://chanuar.com/',
+                jobTitle: t('home.role', { lng: language }),
+                email: 'carlos@chanuar.com',
+                sameAs: [
+                  'https://github.com/chanuar',
+                  'https://www.linkedin.com/in/carlos-chanuar/',
+                ],
+              },
+            })}
+          </script>
+        </>
+      )}
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       <Outlet />
     </>

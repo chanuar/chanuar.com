@@ -9,6 +9,8 @@ export function RouteError() {
     <div className="portfolio-shell">
       <title>{t('routeError.metaTitle')}</title>
       <meta name="robots" content="noindex, nofollow" />
+      <meta name="theme-color" content="#08090b" />
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       <a className="portfolio-skip" href="#main-content">
         {t('shell.skip')}
       </a>

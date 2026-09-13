@@ -2,11 +2,13 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider } from 'react-router/dom';
 import './i18n';
+import { removeStaticMetadata } from './metadata';
 import { router } from './router';
 
 const root = document.getElementById('root');
 if (!root) throw new Error('No se encontró el nodo raíz de la aplicación.');
 
+removeStaticMetadata();
 createRoot(root).render(
   <StrictMode>
     <RouterProvider router={router} />
