@@ -14,10 +14,18 @@ export function PortfolioShell() {
   const homePath = useLocation().pathname === '/en' ? '/en' : '/';
 
   useGSAP(() => {
-    ScrollSmoother.create({
-      smooth: 1,
-      effects: true,
-    });
+    gsap.matchMedia().add(
+      {
+        allowMotion: '(prefers-reduced-motion: no-preference)',
+        reduceMotion: '(prefers-reduced-motion: reduce)',
+      },
+      ({ conditions }) => {
+        ScrollSmoother.create({
+          smooth: conditions?.reduceMotion ? 0 : 1,
+          effects: !conditions?.reduceMotion,
+        });
+      },
+    );
   });
   return (
     <>
