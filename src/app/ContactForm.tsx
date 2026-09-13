@@ -87,6 +87,28 @@ export function ContactForm() {
             {t('contactForm.messageHint', { min: MESSAGE_MIN_LENGTH, max: MESSAGE_MAX_LENGTH })}
           </p>
         </div>
+        <div className="portfolio-contact-form__privacy">
+          <p>{t('contactForm.privacySummary')}</p>
+          <p>
+            {t('contactForm.privacyRights')}{' '}
+            <a href="mailto:carlos@chanuar.com">carlos@chanuar.com</a>.
+          </p>
+          <details>
+            <summary>{t('contactForm.privacyDetails')}</summary>
+            <p>{t('contactForm.privacyStorage')}</p>
+            <p>
+              {t('contactForm.privacyProvider')}{' '}
+              <a href="https://www.emailjs.com/legal/privacy-policy/">
+                {t('contactForm.privacyProviderLink')}
+              </a>
+              .
+            </p>
+            <p>
+              {t('contactForm.privacyComplaint')}{' '}
+              <a href="https://www.aepd.es">{t('contactForm.privacyAuthority')}</a>.
+            </p>
+          </details>
+        </div>
         <div className="portfolio-contact-form__actions">
           <div className="portfolio-contact-form__feedback" aria-live="polite">
             {!isConfigured && <p>{t('contactForm.unavailable')}</p>}

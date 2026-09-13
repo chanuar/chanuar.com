@@ -627,8 +627,27 @@ body.portfolio-page * {
   }
 
   .portfolio-contact-form__field--message,
+  .portfolio-contact-form__privacy,
   .portfolio-contact-form__actions {
     grid-column: 1 / -1;
+  }
+
+  .portfolio-contact-form__privacy {
+    color: var(--portfolio-muted);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+  .portfolio-contact-form__privacy p {
+    margin: 0 0 12px;
+  }
+
+  .portfolio-contact-form__privacy summary {
+    min-height: 44px;
+    padding-block: 12px;
+    color: var(--portfolio-accent);
+    cursor: pointer;
   }
 
   .portfolio-contact-form label {

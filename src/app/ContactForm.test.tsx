@@ -45,6 +45,18 @@ describe('ContactForm', () => {
     expect(screen.getByLabelText('Mensaje')).toHaveAccessibleDescription(
       'Entre 10 y 2000 caracteres.',
     );
+    expect(
+      screen.getByText(/Tu nombre, email y mensaje llegan a mi correo mediante EmailJS/),
+    ).toBeVisible();
+    expect(screen.getByRole('link', { name: 'carlos@chanuar.com' })).toHaveAttribute(
+      'href',
+      'mailto:carlos@chanuar.com',
+    );
+    await userEvent.click(screen.getByText('Más información sobre tus datos'));
+    expect(screen.getByRole('link', { name: 'política de privacidad' })).toHaveAttribute(
+      'href',
+      'https://www.emailjs.com/legal/privacy-policy/',
+    );
     const user = await completeForm();
 
     await user.click(screen.getByRole('button', { name: 'Enviar mensaje' }));

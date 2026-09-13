@@ -63,6 +63,10 @@ describe('portfolio surfaces', () => {
     expect(screen.getByLabelText('Message')).toHaveAccessibleDescription(
       'Between 10 and 2000 characters.',
     );
+    expect(
+      screen.getByText(/Your name, email address and message reach my inbox through EmailJS/),
+    ).toBeVisible();
+    expect(screen.getByText('More about your data')).toBeVisible();
     expect(screen.getByRole('link', { name: '01 Projects' })).toBeVisible();
     expect(screen.getByRole('link', { name: '01 Projects' })).toHaveAttribute(
       'href',
