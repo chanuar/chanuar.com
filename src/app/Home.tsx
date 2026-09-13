@@ -155,8 +155,7 @@ export function Home() {
           </h2>
           <label className="portfolio-technologies__toggle">
             <input type="checkbox" />
-            <span className="portfolio-technologies__pause">{t('home.pause')}</span>
-            <span className="portfolio-technologies__resume">{t('home.resume')}</span>
+            <span className="portfolio-visually-hidden">{t('home.pause')}</span>
             <span className="portfolio-technologies__pause-icon" aria-hidden="true">
               Ⅱ
             </span>

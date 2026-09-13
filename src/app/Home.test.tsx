@@ -10,7 +10,8 @@ function renderPage(path: string) {
 }
 
 describe('portfolio surfaces', () => {
-  it('presents the owner, contact links, and both projects', () => {
+  it('presents the owner, contact links, and both projects', async () => {
+    const user = userEvent.setup();
     renderPage('/');
 
     expect(screen.getByRole('heading', { name: 'Carlos Alberto Chanuar Martínez' })).toBeVisible();
@@ -41,7 +42,14 @@ describe('portfolio surfaces', () => {
     const technologies = screen.getByRole('list', { name: 'Tecnologías que utilizo' });
     expect(within(technologies).getAllByRole('listitem')).toHaveLength(17);
     expect(technologies.querySelectorAll('img')).toHaveLength(17);
-    expect(screen.getByRole('checkbox', { name: /Pausar/ })).toBeVisible();
+    const pause = screen.getByRole('checkbox', { name: 'Pausar animación de tecnologías' });
+    expect(pause).not.toBeChecked();
+    pause.focus();
+    await user.keyboard('[Space]');
+    expect(pause).toBeChecked();
+    expect(pause).toHaveAccessibleName('Pausar animación de tecnologías');
+    await user.keyboard('[Space]');
+    expect(pause).not.toBeChecked();
   });
 
   it('uses the portfolio shell for unknown routes', () => {
@@ -59,6 +67,7 @@ describe('portfolio surfaces', () => {
     await user.click(screen.getByRole('link', { name: 'EN' }));
 
     expect(await screen.findByText('Full-stack developer')).toBeVisible();
+    expect(screen.getByRole('checkbox', { name: 'Pause technology animation' })).toBeVisible();
     expect(screen.getByText('All fields are required.')).toBeVisible();
     expect(screen.getByLabelText('Message')).toHaveAccessibleDescription(
       'Between 10 and 2000 characters.',

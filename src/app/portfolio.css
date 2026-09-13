@@ -194,9 +194,7 @@ body.portfolio-page * {
   }
 
   .portfolio-visually-hidden,
-  .portfolio-technology__name,
-  .portfolio-technologies__pause,
-  .portfolio-technologies__resume {
+  .portfolio-technology__name {
     position: absolute;
     width: 1px;
     height: 1px;

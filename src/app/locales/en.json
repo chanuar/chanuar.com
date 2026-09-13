@@ -41,8 +41,7 @@
     },
     "technologiesLabel": "02 / Stack",
     "technologiesTitle": "Technologies",
-    "pause": "Pause",
-    "resume": "Resume",
+    "pause": "Pause technology animation",
     "technologiesList": "Technologies I use"
   },
   "contactForm": {
