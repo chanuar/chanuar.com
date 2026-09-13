@@ -638,7 +638,7 @@ body.portfolio-page * {
     min-height: 48px;
     padding: 10px 0;
     border: 0;
-    border-bottom: 1px solid var(--portfolio-line);
+    border-bottom: 1px solid var(--portfolio-muted);
     border-radius: 0;
     color: var(--portfolio-text);
     background: transparent;
@@ -648,11 +648,6 @@ body.portfolio-page * {
   .portfolio-contact-form textarea {
     min-height: 132px;
     resize: vertical;
-  }
-
-  .portfolio-contact-form input:hover,
-  .portfolio-contact-form textarea:hover {
-    border-color: var(--portfolio-muted);
   }
 
   .portfolio-contact-form input:focus-visible,
