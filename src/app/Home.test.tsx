@@ -10,7 +10,7 @@ function renderPage(path: string) {
 }
 
 describe('portfolio surfaces', () => {
-  it('presents the owner, contact links, and both projects', async () => {
+  it('presents the owner, contact links, and all three projects', async () => {
     const user = userEvent.setup();
     renderPage('/');
 
@@ -39,9 +39,16 @@ describe('portfolio surfaces', () => {
     );
     expect(screen.getByText(/normaliza más de 2\.500 skins/)).toBeVisible();
     expect(screen.getByText(/horarios públicos de 14 restaurantes/)).toBeVisible();
+    expect(screen.getByRole('link', { name: 'SanrioGang Archive' })).toHaveAttribute(
+      'href',
+      'https://sanriogangarchive.com',
+    );
+    expect(screen.getByText('Web musical · Diseño y desarrollo')).toBeVisible();
+    expect(screen.getByText('02 proyectos')).toBeVisible();
     const technologies = screen.getByRole('list', { name: 'Tecnologías que utilizo' });
-    expect(within(technologies).getAllByRole('listitem')).toHaveLength(17);
-    expect(technologies.querySelectorAll('img')).toHaveLength(17);
+    expect(within(technologies).getAllByRole('listitem')).toHaveLength(18);
+    expect(technologies.querySelectorAll('img')).toHaveLength(18);
+    expect(within(technologies).getByText('Astro')).toBeInTheDocument();
     const pause = screen.getByRole('checkbox', { name: 'Pausar animación de tecnologías' });
     expect(pause).not.toBeChecked();
     pause.focus();
@@ -67,6 +74,8 @@ describe('portfolio surfaces', () => {
     await user.click(screen.getByRole('link', { name: 'EN' }));
 
     expect(await screen.findByText('Full-stack developer')).toBeVisible();
+    expect(screen.getByText('Music website · Design and development')).toBeVisible();
+    expect(screen.getByText('02 projects')).toBeVisible();
     expect(screen.getByRole('checkbox', { name: 'Pause technology animation' })).toBeVisible();
     expect(screen.getByText('All fields are required.')).toBeVisible();
     expect(screen.getByLabelText('Message')).toHaveAccessibleDescription(

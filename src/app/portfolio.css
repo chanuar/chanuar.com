@@ -556,6 +556,10 @@ body.portfolio-page * {
     filter: invert(1);
   }
 
+  .portfolio-technologies__track img[src*='/astro/'] {
+    filter: invert(1) hue-rotate(180deg);
+  }
+
   @keyframes portfolio-technologies-scroll {
     to {
       transform: translateX(-50%);

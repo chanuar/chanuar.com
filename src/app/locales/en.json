@@ -19,7 +19,7 @@
     "explore": "Explore work",
     "projectsLabel": "01 / Selected projects",
     "projectsTitle": "Projects",
-    "projectCount": "02 projects",
+    "projectsSection": "02 projects",
     "inUse": "In use",
     "challenge": "The challenge",
     "response": "The response",
@@ -38,6 +38,13 @@
       "pipelineLabel": "The scraper",
       "pipeline": "A Python and Playwright CLI extracts public menus and opening hours from 14 restaurants, validates each catalogue, and publishes it atomically.",
       "flowSource": "Public menus"
+    },
+    "sanriogang": {
+      "subtitle": "Music website · Design and development",
+      "challenge": "Give the group a space of their own to bring together their music, images, and memories.",
+      "response": "A digital archive bringing together the group's songs, photographs, and fragments with a distinct identity.",
+      "designLabel": "The design",
+      "design": "A collage aesthetic built around the group's logo, with galleries, video, and navigation adapted for mobile."
     },
     "technologiesLabel": "02 / Stack",
     "technologiesTitle": "Technologies",

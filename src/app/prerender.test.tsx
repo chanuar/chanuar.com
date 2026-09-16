@@ -54,11 +54,15 @@ it.each([
         'href',
         'https://menubox.chanuar.com',
       );
+      expect(screen.getByRole('link', { name: 'SanrioGang Archive' })).toHaveAttribute(
+        'href',
+        'https://sanriogangarchive.com',
+      );
       expect(
         screen.getByRole('list', {
           name: language === 'en' ? 'Technologies I use' : 'Tecnologías que utilizo',
         }).children,
-      ).toHaveLength(17);
+      ).toHaveLength(18);
     }
 
     const container = document.getElementById('root');

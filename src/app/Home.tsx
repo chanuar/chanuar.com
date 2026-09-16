@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 const TECHNOLOGIES = [
   ['PostgreSQL', 'postgresql/postgresql-original.svg'],
   ['Next.js', 'nextjs/nextjs-original.svg'],
+  ['Astro', 'astro/astro-original.svg'],
   ['React', 'react/react-original.svg'],
   ['JavaScript', 'javascript/javascript-original.svg'],
   ['TypeScript', 'typescript/typescript-original.svg'],
@@ -48,7 +49,7 @@ export function Home() {
           <h2 id="projects-title" className="portfolio-visually-hidden">
             {t('home.projectsTitle')}
           </h2>
-          <span>{t('home.projectCount')}</span>
+          <span>{t('home.projectsSection')}</span>
         </div>
         <div className="portfolio-project-list">
           <article className="portfolio-project">
@@ -134,6 +135,50 @@ export function Home() {
                 <li>Python</li>
                 <li>Playwright</li>
                 <li>Supabase</li>
+              </ul>
+              <span className="portfolio-project__arrow" aria-hidden="true">
+                ↗
+              </span>
+            </a>
+          </article>
+          <article className="portfolio-project">
+            <a
+              className="portfolio-project__link"
+              href="https://sanriogangarchive.com"
+              aria-labelledby="sanriogang-title"
+              aria-describedby="sanriogang-story"
+            >
+              <span className="portfolio-project__number" aria-hidden="true">
+                03
+              </span>
+              <div className="portfolio-project__title">
+                <p>{t('home.sanriogang.subtitle')}</p>
+                <h3 id="sanriogang-title">
+                  Sanrio
+                  <wbr />
+                  Gang Archive
+                </h3>
+              </div>
+              <span className="portfolio-project__status">{t('home.inUse')}</span>
+              <div id="sanriogang-story" className="portfolio-project__story">
+                <div>
+                  <p className="portfolio-label">{t('home.challenge')}</p>
+                  <p className="portfolio-project__copy">{t('home.sanriogang.challenge')}</p>
+                </div>
+                <div>
+                  <p className="portfolio-label">{t('home.response')}</p>
+                  <p className="portfolio-project__copy">{t('home.sanriogang.response')}</p>
+                </div>
+                <div className="portfolio-project__pipeline">
+                  <p className="portfolio-label">{t('home.sanriogang.designLabel')}</p>
+                  <p className="portfolio-project__copy">{t('home.sanriogang.design')}</p>
+                </div>
+              </div>
+              <ul className="portfolio-tags" aria-label={t('home.technologiesTitle')}>
+                <li>Astro</li>
+                <li>TypeScript</li>
+                <li>HTML</li>
+                <li>CSS</li>
               </ul>
               <span className="portfolio-project__arrow" aria-hidden="true">
                 ↗
