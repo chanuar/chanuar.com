@@ -21,6 +21,27 @@ const TECHNOLOGIES = [
   ['Docker', 'docker/docker-original.svg'],
 ];
 
+const PROJECTS = [
+  {
+    id: 'skinfolio',
+    name: 'Skinfolio',
+    url: 'https://skinfolio.chanuar.com',
+    tags: ['React', 'TypeScript', 'Node.js', 'Supabase'],
+  },
+  {
+    id: 'menubox',
+    name: 'MenuBox',
+    url: 'https://menubox.chanuar.com',
+    tags: ['React', 'TypeScript', 'Python', 'Playwright', 'Supabase'],
+  },
+  {
+    id: 'sanriogang',
+    name: 'SanrioGang Archive',
+    url: 'https://sanriogangarchive.com',
+    tags: ['Astro', 'TypeScript', 'HTML', 'CSS'],
+  },
+] as const;
+
 export function Home() {
   const { t } = useTranslation();
 
@@ -28,163 +49,119 @@ export function Home() {
     <main id="main-content" className="portfolio-main" tabIndex={-1}>
       <section className="portfolio-hero" aria-labelledby="portfolio-title">
         <div className="portfolio-hero__meta">
-          <p className="portfolio-label">{t('home.profileLabel')}</p>
-          <p>{t('home.role')}</p>
-          <p>{t('home.areas')}</p>
+          <p className="portfolio-label">{t('home.role')}</p>
+          <p className="portfolio-hero__availability">{t('home.currentWork')}</p>
         </div>
-        <h1 id="portfolio-title">
-          <span>Carlos Alberto</span> <span>Chanuar Martínez</span>
+        <h1 id="portfolio-title" aria-label="Carlos Alberto Chanuar Martínez">
+          <span>
+            Carlos Chanuar<span className="portfolio-hero__dot">.</span>
+          </span>
         </h1>
-        <div className="portfolio-hero__summary">
-          <p>{t('home.summary')}</p>
-          <a className="portfolio-button" href="#proyectos">
-            {t('home.explore')} <span aria-hidden="true">↓</span>
-          </a>
+        <div className="portfolio-hero__bottom">
+          <p className="portfolio-hero__statement">
+            {t('home.headline')}
+            <br />
+            <span>{t('home.headlineAccent')}</span>
+          </p>
+          <div className="portfolio-hero__summary">
+            <p>{t('home.introduction')}</p>
+            <div className="portfolio-hero__links">
+              <a className="portfolio-button" href="#proyectos">
+                {t('home.explore')} <span aria-hidden="true">↘</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className="portfolio-hero__footnote">
+          <span>{t('home.areas')}</span>
+          <span aria-hidden="true">{t('home.scroll')} ↓</span>
         </div>
       </section>
 
-      <section id="proyectos" className="portfolio-projects" aria-labelledby="projects-title">
+      <section
+        id="proyectos"
+        className="portfolio-projects"
+        aria-labelledby="projects-title"
+        tabIndex={-1}
+      >
         <div className="portfolio-section-heading">
-          <p className="portfolio-label">{t('home.projectsLabel')}</p>
-          <h2 id="projects-title" className="portfolio-visually-hidden">
-            {t('home.projectsTitle')}
+          <h2 id="projects-title" className="portfolio-label">
+            {t('home.projectsLabel')}
           </h2>
-          <span>{t('home.projectsSection')}</span>
+          <p>{t('home.projectsIntro')}</p>
         </div>
         <div className="portfolio-project-list">
-          <article className="portfolio-project">
-            <a
-              className="portfolio-project__link"
-              href="https://skinfolio.chanuar.com"
-              aria-labelledby="skinfolio-title"
-              aria-describedby="skinfolio-story"
+          {PROJECTS.map((project, index) => (
+            <article
+              className={`portfolio-project portfolio-project--${project.id}`}
+              key={project.id}
             >
-              <span className="portfolio-project__number" aria-hidden="true">
-                01
-              </span>
-              <div className="portfolio-project__title">
-                <p>{t('home.skinfolio.subtitle')}</p>
-                <h3 id="skinfolio-title">Skinfolio</h3>
-              </div>
-              <span className="portfolio-project__status">{t('home.inUse')}</span>
-              <div id="skinfolio-story" className="portfolio-project__story">
+              <a
+                className="portfolio-project__link"
+                href={project.url}
+                aria-labelledby={`${project.id}-title`}
+                aria-describedby={`${project.id}-response`}
+              >
+                <img
+                  className="portfolio-project__backdrop"
+                  src={`/projects/${project.id}.jpg`}
+                  alt=""
+                  width="1440"
+                  height="960"
+                  loading="lazy"
+                />
+                <img
+                  className="portfolio-project__preview"
+                  src={`/projects/${project.id}.jpg`}
+                  alt=""
+                  width="1440"
+                  height="960"
+                  loading="lazy"
+                />
+                <div className="portfolio-project__topline">
+                  <span className="portfolio-project__number">0{index + 1}</span>
+                  <span className="portfolio-project__status">{t('home.inUse')}</span>
+                </div>
+                <div className="portfolio-project__title">
+                  <p>{t(`home.${project.id}.subtitle`)}</p>
+                  <h3 id={`${project.id}-title`}>{project.name}</h3>
+                  <ul className="portfolio-tags" aria-label={t('home.technologiesTitle')}>
+                    {project.tags.map((tag) => (
+                      <li key={tag}>{tag}</li>
+                    ))}
+                  </ul>
+                </div>
+                <span className="portfolio-project__visit">
+                  {t('home.visitProject')}
+                  <span className="portfolio-project__arrow" aria-hidden="true">
+                    ↗
+                  </span>
+                </span>
+              </a>
+              <div className="portfolio-project__story">
                 <div>
                   <p className="portfolio-label">{t('home.challenge')}</p>
-                  <p className="portfolio-project__copy">{t('home.skinfolio.challenge')}</p>
+                  <p className="portfolio-project__copy">{t(`home.${project.id}.challenge`)}</p>
                 </div>
                 <div>
                   <p className="portfolio-label">{t('home.response')}</p>
-                  <p className="portfolio-project__copy">{t('home.skinfolio.response')}</p>
+                  <p id={`${project.id}-response`} className="portfolio-project__copy">
+                    {t(`home.${project.id}.response`)}
+                  </p>
                 </div>
-                <div className="portfolio-project__pipeline">
-                  <p className="portfolio-label">{t('home.skinfolio.pipelineLabel')}</p>
-                  <p className="portfolio-project__copy">{t('home.skinfolio.pipeline')}</p>
-                  <p className="portfolio-project__flow">
-                    {t('home.skinfolio.flowSource')} <span aria-hidden="true">→</span> Node.js{' '}
-                    <span aria-hidden="true">→</span> Supabase
+                <div>
+                  <p className="portfolio-label">
+                    {t(
+                      `home.${project.id}.${project.id === 'sanriogang' ? 'designLabel' : 'pipelineLabel'}`,
+                    )}
+                  </p>
+                  <p className="portfolio-project__copy">
+                    {t(`home.${project.id}.${project.id === 'sanriogang' ? 'design' : 'pipeline'}`)}
                   </p>
                 </div>
               </div>
-              <ul className="portfolio-tags" aria-label={t('home.technologiesTitle')}>
-                <li>React</li>
-                <li>TypeScript</li>
-                <li>Node.js</li>
-                <li>Supabase</li>
-              </ul>
-              <span className="portfolio-project__arrow" aria-hidden="true">
-                ↗
-              </span>
-            </a>
-          </article>
-          <article className="portfolio-project">
-            <a
-              className="portfolio-project__link"
-              href="https://menubox.chanuar.com"
-              aria-labelledby="food-title"
-              aria-describedby="food-story"
-            >
-              <span className="portfolio-project__number" aria-hidden="true">
-                02
-              </span>
-              <div className="portfolio-project__title">
-                <p>{t('home.menubox.subtitle')}</p>
-                <h3 id="food-title">MenuBox</h3>
-              </div>
-              <span className="portfolio-project__status">{t('home.inUse')}</span>
-              <div id="food-story" className="portfolio-project__story">
-                <div>
-                  <p className="portfolio-label">{t('home.challenge')}</p>
-                  <p className="portfolio-project__copy">{t('home.menubox.challenge')}</p>
-                </div>
-                <div>
-                  <p className="portfolio-label">{t('home.response')}</p>
-                  <p className="portfolio-project__copy">{t('home.menubox.response')}</p>
-                </div>
-                <div className="portfolio-project__pipeline">
-                  <p className="portfolio-label">{t('home.menubox.pipelineLabel')}</p>
-                  <p className="portfolio-project__copy">{t('home.menubox.pipeline')}</p>
-                  <p className="portfolio-project__flow">
-                    {t('home.menubox.flowSource')} <span aria-hidden="true">→</span> Python +
-                    Playwright <span aria-hidden="true">→</span> Supabase
-                  </p>
-                </div>
-              </div>
-              <ul className="portfolio-tags" aria-label={t('home.technologiesTitle')}>
-                <li>React</li>
-                <li>TypeScript</li>
-                <li>Python</li>
-                <li>Playwright</li>
-                <li>Supabase</li>
-              </ul>
-              <span className="portfolio-project__arrow" aria-hidden="true">
-                ↗
-              </span>
-            </a>
-          </article>
-          <article className="portfolio-project">
-            <a
-              className="portfolio-project__link"
-              href="https://sanriogangarchive.com"
-              aria-labelledby="sanriogang-title"
-              aria-describedby="sanriogang-story"
-            >
-              <span className="portfolio-project__number" aria-hidden="true">
-                03
-              </span>
-              <div className="portfolio-project__title">
-                <p>{t('home.sanriogang.subtitle')}</p>
-                <h3 id="sanriogang-title">
-                  Sanrio
-                  <wbr />
-                  Gang Archive
-                </h3>
-              </div>
-              <span className="portfolio-project__status">{t('home.inUse')}</span>
-              <div id="sanriogang-story" className="portfolio-project__story">
-                <div>
-                  <p className="portfolio-label">{t('home.challenge')}</p>
-                  <p className="portfolio-project__copy">{t('home.sanriogang.challenge')}</p>
-                </div>
-                <div>
-                  <p className="portfolio-label">{t('home.response')}</p>
-                  <p className="portfolio-project__copy">{t('home.sanriogang.response')}</p>
-                </div>
-                <div className="portfolio-project__pipeline">
-                  <p className="portfolio-label">{t('home.sanriogang.designLabel')}</p>
-                  <p className="portfolio-project__copy">{t('home.sanriogang.design')}</p>
-                </div>
-              </div>
-              <ul className="portfolio-tags" aria-label={t('home.technologiesTitle')}>
-                <li>Astro</li>
-                <li>TypeScript</li>
-                <li>HTML</li>
-                <li>CSS</li>
-              </ul>
-              <span className="portfolio-project__arrow" aria-hidden="true">
-                ↗
-              </span>
-            </a>
-          </article>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -192,6 +169,7 @@ export function Home() {
         id="tecnologias"
         className="portfolio-technologies"
         aria-labelledby="technologies-title"
+        tabIndex={-1}
       >
         <div className="portfolio-technologies__heading">
           <p className="portfolio-label">{t('home.technologiesLabel')}</p>

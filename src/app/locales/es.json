@@ -4,22 +4,18 @@
     "skip": "Saltar al contenido",
     "home": "chanuar.com, inicio",
     "navigation": "Navegación principal",
-    "projects": "01 Proyectos",
-    "stack": "02 Stack",
-    "contact": "03 Contacto",
+    "projects": "Proyectos",
+    "stack": "Stack",
+    "contact": "Contacto",
     "contactLabel": "03 / Contacto",
-    "contactTitle": "Contáctame",
-    "contactCopy": "Envíame un mensaje a través del formulario o escríbeme por email."
+    "contactTitle": "¿Hablamos?",
+    "contactCopy": "Si tienes un proyecto en mente o quieres conocer más sobre mi trabajo, estaré encantado de leerte."
   },
   "home": {
-    "profileLabel": "00 / Perfil",
     "role": "Desarrollador full stack",
     "areas": "Interfaces · Datos · Producto",
-    "summary": "Diseño y desarrollo aplicaciones web completas, de la interfaz al backend.",
     "explore": "Explorar trabajo",
     "projectsLabel": "01 / Proyectos seleccionados",
-    "projectsTitle": "Proyectos",
-    "projectsSection": "02 proyectos",
     "inUse": "En uso",
     "challenge": "El reto",
     "response": "La respuesta",
@@ -28,16 +24,14 @@
       "challenge": "Entender una colección creciente sin perderse entre skins y chromas.",
       "response": "Un catálogo personal con propiedad, ofertas y progreso en un solo lugar.",
       "pipelineLabel": "El collector",
-      "pipeline": "Un proceso local en Node.js lee la API del cliente de League, normaliza más de 2.500 skins y sincroniza propiedad, chromas, maestría y nuevas adquisiciones.",
-      "flowSource": "Cliente de League"
+      "pipeline": "Un proceso local en Node.js lee la API del cliente de League, normaliza más de 2.500 skins y sincroniza propiedad, chromas, maestría y nuevas adquisiciones."
     },
     "menubox": {
       "subtitle": "Pedidos de equipo · App + scraper",
       "challenge": "Coordinar el pedido semanal de varias personas sin perder elecciones.",
       "response": "Un flujo compartido para elegir restaurante, revisar y reunir el pedido.",
       "pipelineLabel": "El scraper",
-      "pipeline": "Un CLI en Python y Playwright extrae menús y horarios públicos de 14 restaurantes, valida cada catálogo y lo publica de forma atómica.",
-      "flowSource": "Menús públicos"
+      "pipeline": "Un CLI en Python y Playwright extrae menús y horarios públicos de 14 restaurantes, valida cada catálogo y lo publica de forma atómica."
     },
     "sanriogang": {
       "subtitle": "Web musical · Diseño y desarrollo",
@@ -46,10 +40,17 @@
       "designLabel": "El diseño",
       "design": "Una estética de collage construida alrededor del logo del grupo, con galerías, vídeo y navegación adaptada a móvil."
     },
-    "technologiesLabel": "02 / Stack",
+    "technologiesLabel": "02 / Herramientas de trabajo",
     "technologiesTitle": "Tecnologías",
     "pause": "Pausar animación de tecnologías",
-    "technologiesList": "Tecnologías que utilizo"
+    "technologiesList": "Tecnologías que utilizo",
+    "currentWork": "Actualmente en Bitbox",
+    "headline": "Ideas que toman forma.",
+    "headlineAccent": "Código que las hace funcionar.",
+    "introduction": "Soy desarrollador full stack, con ganas de seguir aprendiendo y probar nuevas tecnologías. Tras estudiar el ciclo superior de DAM y empezar a trabajar en el sector, he empezado a cursar Ingeniería Informática en la UOC para ampliar mis conocimientos.",
+    "scroll": "Sigue explorando",
+    "projectsIntro": "Proyectos propios, problemas reales y un espacio para experimentar.",
+    "visitProject": "Explorar proyecto"
   },
   "contactForm": {
     "requiredFields": "Todos los campos son obligatorios.",

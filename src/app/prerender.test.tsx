@@ -58,6 +58,8 @@ it.each([
         'href',
         'https://sanriogangarchive.com',
       );
+      expect(screen.getByText(/DAM.*UOC/)).toBeVisible();
+      expect(document.querySelectorAll('.portfolio-project__preview')).toHaveLength(3);
       expect(
         screen.getByRole('list', {
           name: language === 'en' ? 'Technologies I use' : 'Tecnologías que utilizo',

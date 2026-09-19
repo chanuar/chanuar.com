@@ -4,22 +4,18 @@
     "skip": "Skip to content",
     "home": "chanuar.com, home",
     "navigation": "Main navigation",
-    "projects": "01 Projects",
-    "stack": "02 Stack",
-    "contact": "03 Contact",
+    "projects": "Projects",
+    "stack": "Stack",
+    "contact": "Contact",
     "contactLabel": "03 / Contact",
-    "contactTitle": "Contact me",
-    "contactCopy": "Send me a message through the form or email me."
+    "contactTitle": "Let’s talk.",
+    "contactCopy": "Have a project in mind or want to know more about my work? I’d love to hear from you."
   },
   "home": {
-    "profileLabel": "00 / Profile",
     "role": "Full-stack developer",
     "areas": "Interfaces · Data · Product",
-    "summary": "I design and build complete web applications, from interface to backend.",
     "explore": "Explore work",
     "projectsLabel": "01 / Selected projects",
-    "projectsTitle": "Projects",
-    "projectsSection": "02 projects",
     "inUse": "In use",
     "challenge": "The challenge",
     "response": "The response",
@@ -28,16 +24,14 @@
       "challenge": "Understand a growing collection without getting lost among skins and chromas.",
       "response": "A personal catalogue combining ownership, offers, and progress in one place.",
       "pipelineLabel": "The collector",
-      "pipeline": "A local Node.js process reads the League Client API, normalizes over 2,500 skins, and syncs ownership, chromas, mastery, and new acquisitions.",
-      "flowSource": "League Client"
+      "pipeline": "A local Node.js process reads the League Client API, normalizes over 2,500 skins, and syncs ownership, chromas, mastery, and new acquisitions."
     },
     "menubox": {
       "subtitle": "Team orders · App + scraper",
       "challenge": "Coordinate a weekly group order without losing anyone's choices.",
       "response": "A shared flow to choose a restaurant, review selections, and collect the order.",
       "pipelineLabel": "The scraper",
-      "pipeline": "A Python and Playwright CLI extracts public menus and opening hours from 14 restaurants, validates each catalogue, and publishes it atomically.",
-      "flowSource": "Public menus"
+      "pipeline": "A Python and Playwright CLI extracts public menus and opening hours from 14 restaurants, validates each catalogue, and publishes it atomically."
     },
     "sanriogang": {
       "subtitle": "Music website · Design and development",
@@ -46,10 +40,17 @@
       "designLabel": "The design",
       "design": "A collage aesthetic built around the group's logo, with galleries, video, and navigation adapted for mobile."
     },
-    "technologiesLabel": "02 / Stack",
+    "technologiesLabel": "02 / Tools I work with",
     "technologiesTitle": "Technologies",
     "pause": "Pause technology animation",
-    "technologiesList": "Technologies I use"
+    "technologiesList": "Technologies I use",
+    "currentWork": "Currently at Bitbox",
+    "headline": "Ideas taking shape.",
+    "headlineAccent": "Code making them work.",
+    "introduction": "I’m a full-stack developer, keen to keep learning and try new technologies. After completing a higher vocational qualification in Multiplatform Application Development (DAM) and starting work in the industry, I’ve recently started studying Computer Engineering at UOC to broaden my knowledge.",
+    "scroll": "Keep exploring",
+    "projectsIntro": "Personal projects, real problems, and room to experiment.",
+    "visitProject": "Explore project"
   },
   "contactForm": {
     "requiredFields": "All fields are required.",
