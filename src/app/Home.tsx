@@ -57,19 +57,12 @@ export function Home() {
             Carlos Chanuar<span className="portfolio-hero__dot">.</span>
           </span>
         </h1>
-        <div className="portfolio-hero__bottom">
-          <p className="portfolio-hero__statement">
-            {t('home.headline')}
-            <br />
-            <span>{t('home.headlineAccent')}</span>
-          </p>
-          <div className="portfolio-hero__summary">
-            <p>{t('home.introduction')}</p>
-            <div className="portfolio-hero__links">
-              <a className="portfolio-button" href="#proyectos">
-                {t('home.explore')} <span aria-hidden="true">↘</span>
-              </a>
-            </div>
+        <div className="portfolio-hero__summary">
+          <p>{t('home.introduction')}</p>
+          <div className="portfolio-hero__links">
+            <a className="portfolio-button" href="#proyectos">
+              {t('home.explore')} <span aria-hidden="true">↘</span>
+            </a>
           </div>
         </div>
         <div className="portfolio-hero__footnote">
