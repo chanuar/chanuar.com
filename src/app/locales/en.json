@@ -19,19 +19,23 @@
     "inUse": "In use",
     "challenge": "The challenge",
     "response": "The response",
+    "contribution": "My contribution",
+    "result": "Result:",
     "skinfolio": {
       "subtitle": "Personal collection · App + collector",
       "challenge": "Understand a growing collection without getting lost among skins and chromas.",
-      "response": "A personal catalogue combining ownership, offers, and progress in one place.",
-      "pipelineLabel": "The collector",
-      "pipeline": "A local Node.js process reads the League Client API, normalizes over 2,500 skins, and syncs ownership, chromas, mastery, and new acquisitions."
+      "response": "I built the React and TypeScript interface and a Node.js collector that syncs my collection from the League client to Supabase.",
+      "pipelineLabel": "Technical decision",
+      "pipeline": "I separated CommunityDragon's public catalogue from personal collection data, so skins and artwork can stay up to date without duplicating them in the database.",
+      "result": "A collection browsable by champion, ownership and rarity, with offers, chromas and an acquisition history."
     },
     "menubox": {
       "subtitle": "Team orders · App + scraper",
       "challenge": "Coordinate a weekly group order without losing anyone's choices.",
-      "response": "A shared flow to choose a restaurant, review selections, and collect the order.",
-      "pipelineLabel": "The scraper",
-      "pipeline": "A Python and Playwright CLI extracts public menus and opening hours from 14 restaurants, validates each catalogue, and publishes it atomically."
+      "response": "I built the ordering flow, administration tools and a Python and Playwright scraper that extracts public menus and opening hours from 14 restaurants.",
+      "pipelineLabel": "Technical decision",
+      "pipeline": "The scraper validates each catalogue before publishing it atomically. Each person retrieves their order with a token, and the database controls who can change it.",
+      "result": "The team can choose dishes, review totals and edit selections while ordering is open, with a shared summary to coordinate the order."
     },
     "sanriogang": {
       "subtitle": "Music website · Design and development",

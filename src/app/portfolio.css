@@ -525,6 +525,13 @@ body.portfolio-page * {
     font-size: 0.875rem;
     line-height: 1.75;
   }
+  .portfolio-project__result {
+    max-width: 80ch;
+    margin: 20px 0 0;
+    font-size: 0.875rem;
+    line-height: 1.7;
+  }
+
   .portfolio-project__source {
     display: flex;
     align-items: center;

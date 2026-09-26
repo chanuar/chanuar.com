@@ -67,7 +67,7 @@ describe('portfolio surfaces', () => {
       'href',
       'https://menubox.chanuar.com',
     );
-    expect(screen.getByText(/normaliza más de 2\.500 skins/)).toBeVisible();
+    expect(screen.getByText(/collector en Node.js que sincroniza mi colección/)).toBeVisible();
     expect(screen.getByText(/horarios públicos de 14 restaurantes/)).toBeVisible();
     expect(screen.getByRole('link', { name: 'Ver código de MenuBox' })).toHaveAttribute(
       'href',

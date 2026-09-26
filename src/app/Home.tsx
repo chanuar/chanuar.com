@@ -144,7 +144,9 @@ export function Home() {
                   <p className="portfolio-project__copy">{t(`home.${project.id}.challenge`)}</p>
                 </div>
                 <div>
-                  <p className="portfolio-label">{t('home.response')}</p>
+                  <p className="portfolio-label">
+                    {t(project.source ? 'home.contribution' : 'home.response')}
+                  </p>
                   <p id={`${project.id}-response`} className="portfolio-project__copy">
                     {t(`home.${project.id}.response`)}
                   </p>
@@ -160,6 +162,11 @@ export function Home() {
                   </p>
                 </div>
               </div>
+              {project.source && (
+                <p className="portfolio-project__result">
+                  <strong>{t('home.result')}</strong> {t(`home.${project.id}.result`)}
+                </p>
+              )}
               {project.source && (
                 <a className="portfolio-project__source" href={project.source}>
                   {t('home.source', { project: project.name })} <span aria-hidden="true">↗</span>

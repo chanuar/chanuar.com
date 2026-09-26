@@ -19,19 +19,23 @@
     "inUse": "En uso",
     "challenge": "El reto",
     "response": "La respuesta",
+    "contribution": "Mi aportación",
+    "result": "Resultado:",
     "skinfolio": {
       "subtitle": "Colección personal · App + collector",
       "challenge": "Entender una colección creciente sin perderse entre skins y chromas.",
-      "response": "Un catálogo personal con propiedad, ofertas y progreso en un solo lugar.",
-      "pipelineLabel": "El collector",
-      "pipeline": "Un proceso local en Node.js lee la API del cliente de League, normaliza más de 2.500 skins y sincroniza propiedad, chromas, maestría y nuevas adquisiciones."
+      "response": "Desarrollé la interfaz en React y TypeScript y el collector en Node.js que sincroniza mi colección desde el cliente de League con Supabase.",
+      "pipelineLabel": "Decisión técnica",
+      "pipeline": "Separé el catálogo público de CommunityDragon de los datos personales de la colección. Así puedo actualizar skins e imágenes sin duplicarlas en la base de datos.",
+      "result": "Una colección consultable por campeón, propiedad y rareza, con ofertas, chromas y registro de adquisiciones."
     },
     "menubox": {
       "subtitle": "Pedidos de equipo · App + scraper",
       "challenge": "Coordinar el pedido semanal de varias personas sin perder elecciones.",
-      "response": "Un flujo compartido para elegir restaurante, revisar y reunir el pedido.",
-      "pipelineLabel": "El scraper",
-      "pipeline": "Un CLI en Python y Playwright extrae menús y horarios públicos de 14 restaurantes, valida cada catálogo y lo publica de forma atómica."
+      "response": "Desarrollé el flujo de pedidos, la administración y un scraper en Python y Playwright que extrae menús y horarios públicos de 14 restaurantes.",
+      "pipelineLabel": "Decisión técnica",
+      "pipeline": "El scraper valida cada catálogo antes de publicarlo de forma atómica. Cada persona recupera su pedido con un token y la base de datos controla quién puede modificarlo.",
+      "result": "El equipo puede elegir platos, revisar el total y editar su selección mientras el pedido esté abierto, con un resumen común para organizarlo."
     },
     "sanriogang": {
       "subtitle": "Web musical · Diseño y desarrollo",
