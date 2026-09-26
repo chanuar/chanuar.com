@@ -56,7 +56,7 @@ export function ContactForm() {
       <p id="contact-requirements" className="portfolio-contact-form__hint">
         {t('contactForm.requiredFields')}
       </p>
-      <fieldset disabled={!isHydrated || status === 'sending'}>
+      <fieldset disabled={!isHydrated || !isConfigured || status === 'sending'}>
         <div className="portfolio-contact-form__field">
           <label htmlFor="contact-name">{t('contactForm.name')}</label>
           <input

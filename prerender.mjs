@@ -17,6 +17,9 @@ try {
   ]) {
     const template = new JSDOM(await readFile(`dist/${file}`, 'utf8'));
     const rendered = new JSDOM(await renderDocument(path));
+    // Cloudflare must preserve React's HTML, including the public contact email.
+    rendered.window.document.body.prepend(rendered.window.document.createComment('email_off'));
+    rendered.window.document.body.append(rendered.window.document.createComment('/email_off'));
     for (const asset of template.window.document.querySelectorAll(
       'script[src], link[rel="stylesheet"], link[rel="modulepreload"]',
     )) {

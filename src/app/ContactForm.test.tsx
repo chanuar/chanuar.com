@@ -34,6 +34,9 @@ describe('ContactForm', () => {
       render(<ContactForm />);
 
       expect(screen.getByRole('button', { name: 'Enviar mensaje' })).toBeDisabled();
+      expect(screen.getByLabelText('Nombre')).toBeDisabled();
+      expect(screen.getByLabelText('Email')).toBeDisabled();
+      expect(screen.getByLabelText('Mensaje')).toBeDisabled();
       expect(sendForm).not.toHaveBeenCalled();
     },
   );
