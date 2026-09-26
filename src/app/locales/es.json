@@ -35,7 +35,29 @@
       "response": "Desarrollé el flujo de pedidos, la administración y un scraper en Python y Playwright que extrae menús y horarios públicos de 14 restaurantes.",
       "pipelineLabel": "Decisión técnica",
       "pipeline": "El scraper valida cada catálogo antes de publicarlo de forma atómica. Cada persona recupera su pedido con un token y la base de datos controla quién puede modificarlo.",
-      "result": "El equipo puede elegir platos, revisar el total y editar su selección mientras el pedido esté abierto, con un resumen común para organizarlo."
+      "result": "El equipo puede elegir platos, revisar el total y editar su selección mientras el pedido esté abierto, con un resumen común para organizarlo.",
+      "walkthrough": {
+        "toggle": "Ver cómo funciona",
+        "title": "De elegir a tenerlo apuntado.",
+        "note": "Interfaz real · Pedido de ejemplo",
+        "zoom": "Ampliar captura",
+        "enlarge": "Ampliar captura: {{step}} (se abre en una pestaña nueva)",
+        "choose": {
+          "title": "Elige tus platos",
+          "caption": "Explora la carta, añade las cantidades que quieras y deja una nota para cada plato.",
+          "alt": "Carta de MenuBox con una hamburguesa La clásica de 8,50 € y unas patatas de 3,00 €, una unidad de cada plato seleccionada."
+        },
+        "review": {
+          "title": "Revisa tu pedido",
+          "caption": "Comprueba los platos y el total, indica tu nombre y envía tu selección.",
+          "alt": "Resumen del pedido de ejemplo para Alex: La clásica y patatas, total de 11,50 €, con el botón Enviar pedido."
+        },
+        "confirm": {
+          "title": "Confirma y modifica",
+          "caption": "Recupera la confirmación desde este navegador y haz cambios mientras el pedido siga abierto.",
+          "alt": "Confirmación de MenuBox: Apuntado, Alex. Ticket de 11,50 € y botón Editar pedido."
+        }
+      }
     },
     "sanriogang": {
       "subtitle": "Web musical · Diseño y desarrollo",

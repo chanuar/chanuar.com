@@ -35,7 +35,29 @@
       "response": "I built the ordering flow, administration tools and a Python and Playwright scraper that extracts public menus and opening hours from 14 restaurants.",
       "pipelineLabel": "Technical decision",
       "pipeline": "The scraper validates each catalogue before publishing it atomically. Each person retrieves their order with a token, and the database controls who can change it.",
-      "result": "The team can choose dishes, review totals and edit selections while ordering is open, with a shared summary to coordinate the order."
+      "result": "The team can choose dishes, review totals and edit selections while ordering is open, with a shared summary to coordinate the order.",
+      "walkthrough": {
+        "toggle": "See how it works",
+        "title": "From choosing to placing your order.",
+        "note": "Real interface · Sample order · App in Spanish",
+        "zoom": "Enlarge screenshot",
+        "enlarge": "Enlarge screenshot: {{step}} (opens in a new tab)",
+        "choose": {
+          "title": "Choose your dishes",
+          "caption": "Browse the menu, choose quantities and add a note for each dish.",
+          "alt": "MenuBox menu with one La clásica burger at €8.50 and one portion of fries at €3.00 selected."
+        },
+        "review": {
+          "title": "Review your order",
+          "caption": "Check the dishes and total, enter your name and submit your selection.",
+          "alt": "Sample order summary for Alex: La clásica and fries, €11.50 total, with a Submit order button."
+        },
+        "confirm": {
+          "title": "Confirm and edit",
+          "caption": "Return to your confirmation in this browser and make changes while ordering is open.",
+          "alt": "MenuBox confirmation for Alex with an €11.50 receipt and an Edit order button."
+        }
+      }
     },
     "sanriogang": {
       "subtitle": "Music website · Design and development",

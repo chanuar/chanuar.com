@@ -111,6 +111,34 @@ describe('portfolio surfaces', () => {
     expect(document.querySelector('.portfolio-shell')).toBeInTheDocument();
   });
 
+  it('opens the MenuBox walkthrough with the keyboard and translates its content', async () => {
+    const user = userEvent.setup();
+    renderPage('/');
+    const toggle = screen.getByRole('button', { name: 'Ver cómo funciona' });
+    expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    expect(screen.queryByRole('region', { name: 'De elegir a tenerlo apuntado.' })).toBeNull();
+
+    toggle.focus();
+    await user.keyboard('[Enter]');
+    expect(toggle).toHaveAttribute('aria-expanded', 'true');
+    expect(toggle).toHaveFocus();
+    const tour = screen.getByRole('region', { name: 'De elegir a tenerlo apuntado.' });
+    expect(within(tour).getAllByRole('img')).toHaveLength(3);
+    expect(within(tour).getAllByRole('link', { name: /Ampliar captura:/ })).toHaveLength(3);
+    for (const image of within(tour).getAllByRole('img')) {
+      expect(image).toHaveAttribute('loading', 'lazy');
+    }
+    await user.keyboard('[Space]');
+    expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    expect(tour).not.toBeVisible();
+
+    await user.click(screen.getByRole('link', { name: 'EN' }));
+    await user.click(screen.getByRole('button', { name: 'See how it works' }));
+    expect(screen.getByRole('heading', { name: /Choose your dishes/ })).toBeVisible();
+    expect(screen.getByText('Real interface · Sample order · App in Spanish')).toBeVisible();
+    expect(screen.getAllByRole('link', { name: /Enlarge screenshot:/ })).toHaveLength(3);
+  });
+
   it('navigates to the English portfolio URL', async () => {
     const user = userEvent.setup();
     renderPage('/');

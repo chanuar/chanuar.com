@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const TECHNOLOGIES = [
@@ -47,6 +48,7 @@ const PROJECTS = [
 
 export function Home() {
   const { t } = useTranslation();
+  const [walkthroughOpen, setWalkthroughOpen] = useState(false);
 
   return (
     <main id="main-content" className="portfolio-main" tabIndex={-1}>
@@ -168,9 +170,66 @@ export function Home() {
                 </p>
               )}
               {project.source && (
-                <a className="portfolio-project__source" href={project.source}>
-                  {t('home.source', { project: project.name })} <span aria-hidden="true">↗</span>
-                </a>
+                <div className="portfolio-project__actions">
+                  {project.id === 'menubox' && (
+                    <button
+                      className="portfolio-button"
+                      type="button"
+                      aria-expanded={walkthroughOpen}
+                      aria-controls="menubox-walkthrough"
+                      onClick={() => setWalkthroughOpen(!walkthroughOpen)}
+                    >
+                      {t('home.menubox.walkthrough.toggle')}
+                      <span aria-hidden="true">{walkthroughOpen ? '↑' : '↓'}</span>
+                    </button>
+                  )}
+                  <a className="portfolio-project__source" href={project.source}>
+                    {t('home.source', { project: project.name })} <span aria-hidden="true">↗</span>
+                  </a>
+                </div>
+              )}
+              {project.id === 'menubox' && (
+                <section
+                  id="menubox-walkthrough"
+                  className="portfolio-walkthrough"
+                  aria-labelledby="menubox-walkthrough-title"
+                  hidden={!walkthroughOpen}
+                >
+                  <div className="portfolio-walkthrough__heading">
+                    <h4 id="menubox-walkthrough-title">{t('home.menubox.walkthrough.title')}</h4>
+                    <p>{t('home.menubox.walkthrough.note')}</p>
+                  </div>
+                  <div className="portfolio-walkthrough__steps">
+                    {(['choose', 'review', 'confirm'] as const).map((step, stepIndex) => (
+                      <figure key={step}>
+                        <h5>
+                          <span aria-hidden="true">0{stepIndex + 1}</span>
+                          {t(`home.menubox.walkthrough.${step}.title`)}
+                        </h5>
+                        <a
+                          className="portfolio-walkthrough__image"
+                          href={`/projects/menubox-${step}.webp`}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={t('home.menubox.walkthrough.enlarge', {
+                            step: t(`home.menubox.walkthrough.${step}.title`),
+                          })}
+                        >
+                          <img
+                            src={`/projects/menubox-${step}.webp`}
+                            alt={t(`home.menubox.walkthrough.${step}.alt`)}
+                            width="464"
+                            height="976"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                          <span aria-hidden="true">{t('home.menubox.walkthrough.zoom')} ↗</span>
+                        </a>
+                        <figcaption>{t(`home.menubox.walkthrough.${step}.caption`)}</figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                </section>
               )}
             </article>
           ))}
