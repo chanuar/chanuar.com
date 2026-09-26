@@ -45,7 +45,10 @@
     "pause": "Pause technology animation",
     "technologiesList": "Technologies I use",
     "currentWork": "Software Developer @ IKEA",
-    "introduction": "I’m a full-stack developer, keen to keep learning and try new technologies. After completing a higher vocational qualification in Multiplatform Application Development (DAM) and starting work in the industry, I’ve recently started studying Computer Engineering at UOC to broaden my knowledge.",
+    "introduction": "I build web applications with React, TypeScript and Supabase, and automate data collection with Node.js and Python. My projects connect interfaces, APIs and databases to solve real problems.",
+    "education": "I work as a Software Developer at IKEA. After completing a higher vocational qualification in Multiplatform Application Development (DAM), I’m continuing my education in Computer Engineering at UOC.",
+    "contact": "Get in touch",
+    "source": "View {{project}} source code",
     "scroll": "Keep exploring",
     "projectsIntro": "Personal projects, real problems, and room to experiment.",
     "visitProject": "Explore project"

@@ -45,7 +45,10 @@
     "pause": "Pausar animación de tecnologías",
     "technologiesList": "Tecnologías que utilizo",
     "currentWork": "Software Developer @ IKEA",
-    "introduction": "Soy desarrollador full stack, con ganas de seguir aprendiendo y probar nuevas tecnologías. Tras estudiar el ciclo superior de DAM y empezar a trabajar en el sector, he empezado a cursar Ingeniería Informática en la UOC para ampliar mis conocimientos.",
+    "introduction": "Desarrollo aplicaciones web con React, TypeScript y Supabase, y automatizo la recogida de datos con Node.js y Python. En mis proyectos conecto interfaces, APIs y bases de datos para resolver necesidades reales.",
+    "education": "Trabajo como Software Developer en IKEA. Tras completar el ciclo superior de DAM, continúo mi formación en Ingeniería Informática en la UOC.",
+    "contact": "Contactar",
+    "source": "Ver código de {{project}}",
     "scroll": "Sigue explorando",
     "projectsIntro": "Proyectos propios, problemas reales y un espacio para experimentar.",
     "visitProject": "Explorar proyecto"

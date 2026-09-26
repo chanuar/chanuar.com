@@ -59,16 +59,26 @@ describe('portfolio surfaces', () => {
     expect(screen.getByRole('link', { name: 'Proyectos' })).toHaveAttribute('href', '/#proyectos');
     expect(screen.getByRole('link', { name: 'Stack' })).toHaveAttribute('href', '/#tecnologias');
     expect(screen.getByRole('link', { name: 'Contacto' })).toHaveAttribute('href', '/#contacto');
-    expect(screen.getByRole('link', { name: /Skinfolio/ })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'Skinfolio' })).toHaveAttribute(
       'href',
       'https://skinfolio.chanuar.com',
     );
-    expect(screen.getByRole('link', { name: /MenuBox/ })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'MenuBox' })).toHaveAttribute(
       'href',
       'https://menubox.chanuar.com',
     );
     expect(screen.getByText(/normaliza más de 2\.500 skins/)).toBeVisible();
     expect(screen.getByText(/horarios públicos de 14 restaurantes/)).toBeVisible();
+    expect(screen.getByRole('link', { name: 'Ver código de MenuBox' })).toHaveAttribute(
+      'href',
+      'https://github.com/chanuar/MenuBox',
+    );
+    expect(screen.getByRole('link', { name: 'Ver código de Skinfolio' })).toHaveAttribute(
+      'href',
+      'https://github.com/chanuar/skinfolio',
+    );
+    await user.click(screen.getByRole('link', { name: 'Contactar' }));
+    expect(screen.getByRole('contentinfo')).toHaveFocus();
     expect(screen.getByRole('link', { name: 'SanrioGang Archive' })).toHaveAttribute(
       'href',
       'https://sanriogangarchive.com',

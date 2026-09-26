@@ -26,18 +26,21 @@ const PROJECTS = [
     id: 'skinfolio',
     name: 'Skinfolio',
     url: 'https://skinfolio.chanuar.com',
+    source: 'https://github.com/chanuar/skinfolio',
     tags: ['React', 'TypeScript', 'Node.js', 'Supabase'],
   },
   {
     id: 'menubox',
     name: 'MenuBox',
     url: 'https://menubox.chanuar.com',
+    source: 'https://github.com/chanuar/MenuBox',
     tags: ['React', 'TypeScript', 'Python', 'Playwright', 'Supabase'],
   },
   {
     id: 'sanriogang',
     name: 'SanrioGang Archive',
     url: 'https://sanriogangarchive.com',
+    source: null,
     tags: ['Astro', 'TypeScript', 'HTML', 'CSS'],
   },
 ] as const;
@@ -59,9 +62,13 @@ export function Home() {
         </h1>
         <div className="portfolio-hero__summary">
           <p>{t('home.introduction')}</p>
+          <p className="portfolio-hero__education">{t('home.education')}</p>
           <div className="portfolio-hero__links">
             <a className="portfolio-button" href="#proyectos">
               {t('home.explore')} <span aria-hidden="true">↘</span>
+            </a>
+            <a className="portfolio-button portfolio-button--secondary" href="#contacto">
+              {t('home.contact')} <span aria-hidden="true">↗</span>
             </a>
           </div>
         </div>
@@ -153,6 +160,11 @@ export function Home() {
                   </p>
                 </div>
               </div>
+              {project.source && (
+                <a className="portfolio-project__source" href={project.source}>
+                  {t('home.source', { project: project.name })} <span aria-hidden="true">↗</span>
+                </a>
+              )}
             </article>
           ))}
         </div>
@@ -194,6 +206,7 @@ export function Home() {
               {TECHNOLOGIES.map(([name, icon]) => (
                 <li key={name}>
                   <img src={`/icons/${icon}`} alt="" width="72" height="72" loading="lazy" />
+                  <span className="portfolio-technology__name">{name}</span>
                 </li>
               ))}
             </ul>
