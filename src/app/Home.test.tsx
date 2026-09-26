@@ -175,4 +175,47 @@ describe('portfolio surfaces', () => {
       'https://chanuar.com/en',
     );
   });
+
+  it.each(['', '#proyectos', '#contacto'])(
+    'keeps scroll, focus and expanded content when switching languages at %s',
+    async (hash) => {
+      const user = userEvent.setup();
+      const router = renderPage(`/?ref=portfolio${hash}`);
+      await user.click(screen.getByRole('button', { name: 'Ver cómo funciona' }));
+      const smoother = ScrollSmoother.get();
+      if (!smoother) throw new Error('Missing scroll smoother');
+      const scroll = vi.spyOn(smoother, 'scrollTo');
+      const focusMain = vi.spyOn(screen.getByRole('main'), 'focus');
+      // jsdom has no layout; the fixed language controls are always in view.
+      const languageBounds = ['ES', 'EN'].map((label) =>
+        vi
+          .spyOn(screen.getByRole('link', { name: label }), 'getBoundingClientRect')
+          .mockReturnValue(new DOMRect(0, 16, 44, 42)),
+      );
+      try {
+        for (const label of ['EN', 'ES', 'ES', 'EN']) {
+          await user.click(screen.getByRole('link', { name: label }));
+          expect(router.state.location.pathname).toBe(label === 'EN' ? '/en' : '/');
+          expect(router.state.location.hash).toBe(hash);
+          expect(router.state.location.search).toBe('?ref=portfolio');
+          expect(screen.getByRole('link', { name: label })).toHaveFocus();
+          expect(
+            screen.getByRole('button', {
+              name: label === 'EN' ? 'See how it works' : 'Ver cómo funciona',
+            }),
+          ).toHaveAttribute('aria-expanded', 'true');
+          expect(scroll).not.toHaveBeenCalled();
+          expect(focusMain).not.toHaveBeenCalled();
+        }
+        await act(() => router.navigate(-1));
+        await act(() => router.navigate(1));
+        expect(scroll).not.toHaveBeenCalled();
+        expect(focusMain).not.toHaveBeenCalled();
+      } finally {
+        scroll.mockRestore();
+        focusMain.mockRestore();
+        languageBounds.forEach((bounds) => bounds.mockRestore());
+      }
+    },
+  );
 });

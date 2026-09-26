@@ -31,9 +31,12 @@ export function RouteEnvironment() {
     if (i18n.resolvedLanguage !== language) void i18n.changeLanguage(language);
 
     const routeChanged = previousPath.current !== location.pathname;
+    const languageChange =
+      (previousPath.current === '/' && location.pathname === '/en') ||
+      (previousPath.current === '/en' && location.pathname === '/');
     previousPath.current = location.pathname;
 
-    if (routeChanged) {
+    if (routeChanged && !languageChange) {
       document.getElementById('main-content')?.focus();
     }
   }, [i18n, language, location.pathname]);

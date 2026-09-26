@@ -31,6 +31,7 @@ export function PortfolioShell() {
     const anchor = event.target instanceof Element ? event.target.closest('a') : null;
     if (
       !(anchor instanceof HTMLAnchorElement) ||
+      anchor.closest('.portfolio-language') ||
       event.button !== 0 ||
       event.metaKey ||
       event.ctrlKey ||
@@ -63,7 +64,7 @@ export function PortfolioShell() {
     );
   });
   useGSAP(() => scrollToAnchor(location.hash), {
-    dependencies: [location.pathname, location.hash],
+    dependencies: [location.hash],
   });
   return (
     <>
@@ -97,10 +98,22 @@ export function PortfolioShell() {
             </a>
           </nav>
           <nav className="portfolio-language" aria-label={t('language')}>
-            <NavLink to="/" end hrefLang="es" lang="es">
+            <NavLink
+              to={{ pathname: '/', search: location.search, hash: location.hash }}
+              preventScrollReset
+              end
+              hrefLang="es"
+              lang="es"
+            >
               ES
             </NavLink>
-            <NavLink to="/en" end hrefLang="en" lang="en">
+            <NavLink
+              to={{ pathname: '/en', search: location.search, hash: location.hash }}
+              preventScrollReset
+              end
+              hrefLang="en"
+              lang="en"
+            >
               EN
             </NavLink>
           </nav>
