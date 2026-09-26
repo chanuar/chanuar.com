@@ -355,6 +355,7 @@ body.portfolio-page * {
   }
   .portfolio-project {
     --project-tint: #303c40;
+    --project-padding: 40px;
     min-width: 0;
     overflow: clip;
     border: 1px solid var(--portfolio-line);
@@ -510,8 +511,8 @@ body.portfolio-page * {
   .portfolio-project__story {
     display: grid;
     grid-template-columns: 1fr 1fr 1.4fr;
-    gap: 36px;
-    padding: 32px 40px 38px;
+    gap: 24px 36px;
+    padding: 28px var(--project-padding);
     border-top: 1px solid var(--portfolio-line);
   }
   .portfolio-project__story .portfolio-label {
@@ -526,10 +527,9 @@ body.portfolio-page * {
     line-height: 1.75;
   }
   .portfolio-project__result {
-    margin: 0;
-    padding: 0 40px 28px;
-    font-size: 0.875rem;
-    line-height: 1.7;
+    grid-column: 1 / -1;
+    padding-top: 20px;
+    border-top: 1px solid var(--portfolio-line);
   }
 
   .portfolio-project__actions {
@@ -537,7 +537,7 @@ body.portfolio-page * {
     flex-wrap: wrap;
     align-items: center;
     gap: 12px 24px;
-    padding: 20px 40px;
+    padding: 16px var(--project-padding);
     border-top: 1px solid var(--portfolio-line);
   }
   .portfolio-project__actions button {
@@ -555,7 +555,7 @@ body.portfolio-page * {
   }
   .portfolio-walkthrough {
     border-top: 1px solid var(--portfolio-line);
-    padding: 28px 40px 36px;
+    padding: 28px var(--project-padding) 36px;
   }
   .portfolio-walkthrough__heading {
     display: flex;
@@ -997,10 +997,8 @@ body.portfolio-page * {
   }
 
   @media (max-width: 900px) {
-    .portfolio-project__result,
-    .portfolio-project__actions,
-    .portfolio-walkthrough {
-      padding-inline: 28px;
+    .portfolio-project {
+      --project-padding: 28px;
     }
     .portfolio-section-heading {
       align-items: start;
@@ -1012,7 +1010,6 @@ body.portfolio-page * {
     }
     .portfolio-project__story {
       gap: 24px;
-      padding: 28px;
     }
     .portfolio-project__link {
       min-height: 450px;
@@ -1031,10 +1028,8 @@ body.portfolio-page * {
     }
   }
   @media (max-width: 640px) {
-    .portfolio-project__result,
-    .portfolio-project__actions,
-    .portfolio-walkthrough {
-      padding-inline: 20px;
+    .portfolio-project {
+      --project-padding: 20px;
     }
     .portfolio-walkthrough__steps {
       grid-template-columns: 1fr;
@@ -1143,7 +1138,7 @@ body.portfolio-page * {
     }
     .portfolio-project__story {
       grid-template-columns: 1fr;
-      padding: 24px 20px;
+      padding-block: 24px;
       gap: 24px;
     }
     .portfolio-project__story > div + div {

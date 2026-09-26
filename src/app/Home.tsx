@@ -163,12 +163,13 @@ export function Home() {
                     {t(`home.${project.id}.${project.id === 'sanriogang' ? 'design' : 'pipeline'}`)}
                   </p>
                 </div>
+                {project.source && (
+                  <div className="portfolio-project__result">
+                    <p className="portfolio-label">{t('home.result')}</p>
+                    <p className="portfolio-project__copy">{t(`home.${project.id}.result`)}</p>
+                  </div>
+                )}
               </div>
-              {project.source && (
-                <p className="portfolio-project__result">
-                  <strong>{t('home.result')}</strong> {t(`home.${project.id}.result`)}
-                </p>
-              )}
               {project.source && (
                 <div className="portfolio-project__actions">
                   {project.id === 'menubox' && (
