@@ -313,20 +313,18 @@ export function Home() {
             <h3>Bitbox / IKEA</h3>
             <p>Software Developer</p>
           </div>
-          <div>
-            <p className="portfolio-experience__intro">{t('home.experience.introduction')}</p>
-            <ul className="portfolio-experience__achievements">
-              {(['support', 'agents', 'data', 'quality', 'modernization', 'backend'] as const).map(
-                (achievement) => (
-                  <li key={achievement}>
-                    <h4>{t(`home.experience.${achievement}.title`)}</h4>
-                    <p>{t(`home.experience.${achievement}.description`)}</p>
-                  </li>
-                ),
-              )}
-            </ul>
-          </div>
+          <p className="portfolio-experience__intro">{t('home.experience.introduction')}</p>
         </div>
+        <ul className="portfolio-experience__achievements">
+          {(['support', 'agents', 'data', 'quality', 'modernization', 'backend'] as const).map(
+            (achievement) => (
+              <li key={achievement}>
+                <h4>{t(`home.experience.${achievement}.title`)}</h4>
+                <p>{t(`home.experience.${achievement}.description`)}</p>
+              </li>
+            ),
+          )}
+        </ul>
       </section>
 
       <section

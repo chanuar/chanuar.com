@@ -684,39 +684,55 @@ body.portfolio-page * {
   }
   .portfolio-experience > h2 {
     font:
-      400 clamp(2rem, 3.5vw, 3rem) / 1.1 Georgia,
+      400 clamp(2rem, 3.5vw, 2.75rem) / 1.2 Georgia,
       serif;
     text-transform: none;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.03em;
     color: var(--portfolio-text);
   }
   .portfolio-experience__layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-    gap: 32px 64px;
-    margin-top: 40px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    align-items: center;
+    gap: 48px;
+    margin: 40px 0 42px;
   }
   .portfolio-experience__dates {
-    margin: 0 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 0 14px;
     color: var(--portfolio-accent);
-    font-size: 0.8rem;
+    font:
+      400 11px / 1.5 ui-monospace,
+      Consolas,
+      monospace;
+  }
+  .portfolio-experience__dates::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background: currentColor;
   }
   .portfolio-experience__position h3 {
     margin: 0;
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-size: clamp(1.875rem, 3.8vw, 3rem);
     font-weight: 500;
+    line-height: 1.2;
     letter-spacing: -0.05em;
   }
   .portfolio-experience__position > p:last-child {
-    margin: 12px 0 0;
+    margin: 10px 0 0;
     color: var(--portfolio-muted);
-    font-size: 0.85rem;
+    font-size: 0.8125rem;
   }
   .portfolio-experience__intro {
     max-width: 58ch;
-    margin: 0 0 32px;
-    font-size: 1.1rem;
-    line-height: 1.65;
+    margin: 0;
+    font-size: 1.0625rem;
+    line-height: 1.7;
   }
   .portfolio-experience__achievements,
   .portfolio-education ul {
@@ -728,20 +744,30 @@ body.portfolio-page * {
     list-style: none;
   }
   .portfolio-experience__achievements li {
-    padding-top: 18px;
+    padding-top: 22px;
     border-top: 1px solid var(--portfolio-line);
   }
-  .portfolio-experience__achievements li:first-child {
-    grid-column: 1 / -1;
+  .portfolio-experience__achievements {
+    gap: 32px 48px;
   }
-  .portfolio-experience__achievements h4,
+  .portfolio-experience__achievements h4 {
+    margin: 0;
+    font:
+      400 23px / 1.25 Georgia,
+      serif;
+  }
+  .portfolio-experience__achievements p {
+    margin: 12px 0 0;
+    color: var(--portfolio-muted);
+    font-size: 0.875rem;
+    line-height: 1.8;
+  }
   .portfolio-education h3 {
     margin: 0;
     font-size: 0.95rem;
     font-weight: 500;
     line-height: 1.5;
   }
-  .portfolio-experience__achievements p,
   .portfolio-education li > p:not(.portfolio-label) {
     margin: 10px 0 0;
     color: var(--portfolio-muted);
@@ -1172,9 +1198,6 @@ body.portfolio-page * {
       border-top: 1px solid var(--portfolio-line);
       padding-top: 20px;
     }
-    .portfolio-experience__layout {
-      grid-template-columns: 1fr;
-    }
     .portfolio-footer {
       grid-template-columns: 1fr;
       gap: 40px;
@@ -1191,6 +1214,23 @@ body.portfolio-page * {
     }
     .portfolio-not-found__code {
       grid-row: auto;
+    }
+  }
+  @media (max-width: 600px) {
+    .portfolio-experience__layout {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .portfolio-experience__intro {
+      font-size: 0.9375rem;
+    }
+    .portfolio-experience__achievements {
+      grid-template-columns: 1fr;
+      gap: 26px;
+    }
+    .portfolio-experience__achievements h4 {
+      font-size: 22px;
     }
   }
   @media (max-width: 540px) {
@@ -1367,12 +1407,8 @@ body.portfolio-page * {
     .portfolio-education {
       padding-block: 44px;
     }
-    .portfolio-experience__achievements,
     .portfolio-education ul {
       grid-template-columns: 1fr;
-    }
-    .portfolio-experience__intro {
-      font-size: 1rem;
     }
     .portfolio-technologies__list {
       grid-template-columns: repeat(3, minmax(0, 1fr));
