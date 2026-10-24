@@ -95,13 +95,13 @@ export function ContactForm() {
           </p>
         </div>
         <div className="portfolio-contact-form__privacy">
-          <p>{t('contactForm.privacySummary')}</p>
-          <p>
-            {t('contactForm.privacyRights')}{' '}
-            <a href="mailto:carlos@chanuar.com">carlos@chanuar.com</a>.
-          </p>
           <details>
             <summary>{t('contactForm.privacyDetails')}</summary>
+            <p>{t('contactForm.privacySummary')}</p>
+            <p>
+              {t('contactForm.privacyRights')}{' '}
+              <a href="mailto:carlos@chanuar.com">carlos@chanuar.com</a>.
+            </p>
             <p>{t('contactForm.privacyStorage')}</p>
             <p>
               {t('contactForm.privacyProvider')}{' '}

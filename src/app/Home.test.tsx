@@ -213,6 +213,10 @@ describe('portfolio surfaces', () => {
     );
     expect(
       screen.getByText(/Your name, email address and message reach my inbox through EmailJS/),
+    ).not.toBeVisible();
+    await user.click(screen.getByText('More about your data'));
+    expect(
+      screen.getByText(/Your name, email address and message reach my inbox through EmailJS/),
     ).toBeVisible();
     expect(screen.getByText('More about your data')).toBeVisible();
     expect(screen.getByRole('link', { name: 'Projects' })).toBeVisible();
