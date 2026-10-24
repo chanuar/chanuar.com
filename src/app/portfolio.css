@@ -228,7 +228,19 @@ body.portfolio-page * {
     font-size: 0.8rem;
     font-weight: 500;
     text-decoration: none;
-    transition: transform 160ms var(--ease-out);
+  }
+  .portfolio-button,
+  .portfolio-contact-form button {
+    transition:
+      transform 160ms var(--ease-out),
+      background-color 150ms ease,
+      color 150ms ease,
+      border-color 150ms ease;
+  }
+  .portfolio-text-link > span,
+  .portfolio-project__visit > span {
+    display: inline-block;
+    transition: transform 150ms var(--ease-out);
   }
   .portfolio-button--secondary {
     background: transparent;
@@ -320,21 +332,21 @@ body.portfolio-page * {
     top: 62px;
     left: 4%;
     width: 82%;
-    transform: rotate(-5deg);
+    rotate: -5deg;
   }
   .portfolio-desk__piece--menubox {
     z-index: 3;
     top: 145px;
     right: 0;
     width: 27%;
-    transform: rotate(7deg);
+    rotate: 7deg;
   }
   .portfolio-desk__piece--sanriogang {
     z-index: 2;
     bottom: 20px;
     left: 10%;
     width: 53%;
-    transform: rotate(-9deg);
+    rotate: -9deg;
   }
   .portfolio-projects {
     padding-block: 80px;
@@ -501,6 +513,7 @@ body.portfolio-page * {
   }
   .portfolio-project__receipt {
     display: block;
+    transition: transform 250ms var(--ease-out);
     transform: rotate(7deg) translateY(12px);
   }
   .portfolio-project--sanriogang .portfolio-project__media {
@@ -1011,24 +1024,33 @@ body.portfolio-page * {
       border-color: var(--portfolio-text);
       color: var(--portfolio-bg);
     }
+  }
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
     .portfolio-desk__piece:hover {
       z-index: 4;
-      transform: translateY(-5px) rotate(0);
+      transform: translateY(-5px) scale(1.015);
     }
-    .portfolio-project__link:hover .portfolio-project__arrow {
+    .portfolio-project__link:hover .portfolio-project__arrow,
+    .portfolio-text-link:hover > span,
+    .portfolio-project__link:hover .portfolio-project__visit > span {
       transform: translate(2px, -2px);
     }
-    .portfolio-project--skinfolio .portfolio-project__link:hover .portfolio-project__preview {
-      transform: translateY(-5px);
-    }
+    .portfolio-project--skinfolio .portfolio-project__link:hover .portfolio-project__preview,
     .portfolio-project--sanriogang .portfolio-project__link:hover .portfolio-project__preview {
       transform: translateY(-5px);
     }
+    .portfolio-project--menubox .portfolio-project__link:hover .portfolio-project__preview {
+      transform: rotate(-5deg) translateY(-12px);
+    }
+    .portfolio-project--menubox .portfolio-project__link:hover .portfolio-project__receipt {
+      transform: rotate(7deg) translateY(8px);
+    }
   }
-  @media (prefers-reduced-motion: no-preference) and (pointer: fine) {
-    .portfolio-button:active,
-    .portfolio-contact-form button:active:not(:disabled) {
+  @media (prefers-reduced-motion: no-preference) {
+    .portfolio-button:active:not(:focus-visible),
+    .portfolio-contact-form button:active:not(:disabled):not(:focus-visible) {
       transform: scale(0.97);
+      transition-duration: 100ms;
     }
     @keyframes portfolio-enter {
       from {
@@ -1041,10 +1063,28 @@ body.portfolio-page * {
       }
     }
     .portfolio-hero h1 {
-      animation: portfolio-enter 500ms var(--ease-out) both;
+      animation: portfolio-enter 500ms var(--ease-out) backwards;
     }
-    .portfolio-desk {
-      animation: portfolio-enter 500ms 100ms var(--ease-out) both;
+    .portfolio-hero__introduction {
+      animation: portfolio-enter 500ms 60ms var(--ease-out) backwards;
+    }
+    .portfolio-hero__links {
+      animation: portfolio-enter 500ms 120ms var(--ease-out) backwards;
+    }
+    .portfolio-desk__piece {
+      animation: portfolio-enter 500ms 80ms var(--ease-out) backwards;
+    }
+    .portfolio-desk__piece--menubox {
+      animation-delay: 140ms;
+    }
+    .portfolio-desk__piece--sanriogang {
+      animation-delay: 200ms;
+    }
+    .portfolio-hero:has(:focus-visible) h1,
+    .portfolio-hero:has(:focus-visible) .portfolio-hero__introduction,
+    .portfolio-hero:has(:focus-visible) .portfolio-hero__links,
+    .portfolio-hero:has(:focus-visible) .portfolio-desk__piece {
+      animation: none;
     }
   }
   @media (max-width: 1000px) {
@@ -1404,6 +1444,13 @@ body.portfolio-page * {
     *::after {
       animation: none !important;
       transition: none !important;
+    }
+    .portfolio-button,
+    .portfolio-contact-form button {
+      transition:
+        background-color 150ms ease,
+        color 150ms ease,
+        border-color 150ms ease !important;
     }
   }
 }

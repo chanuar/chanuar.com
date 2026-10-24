@@ -23,8 +23,12 @@ describe('portfolio surfaces', () => {
       contact.focus();
       await user.keyboard('[Enter]');
       expect(router.state.location.hash).toBe('#contacto');
-      expect(scroll).toHaveBeenCalledWith(expect.any(Number), true);
+      expect(scroll).toHaveBeenLastCalledWith(expect.any(Number), false);
       expect(screen.getByRole('contentinfo')).toHaveFocus();
+      contact.focus();
+      await user.keyboard('[Enter]');
+      expect(scroll).toHaveBeenLastCalledWith(expect.any(Number), false);
+      screen.getByRole('contentinfo').focus();
       await user.tab();
       expect(document.activeElement).toHaveAttribute('href', 'mailto:carlos@chanuar.com');
       await act(() => router.navigate(-1));

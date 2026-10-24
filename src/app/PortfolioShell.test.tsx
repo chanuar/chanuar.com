@@ -39,10 +39,9 @@ it.each([false, true])('adapts scrolling when reduced motion starts as %s', (ini
   const content = document.getElementById('smooth-content');
 
   function expectMotion(reduced: boolean) {
-    expect(ScrollSmoother.get()?.smooth()).toBe(reduced ? 0 : 1);
+    expect(ScrollSmoother.get()?.smooth()).toBe(reduced ? 0 : 0.6);
     expect(createSmoother).toHaveBeenLastCalledWith({
-      smooth: reduced ? 0 : 1,
-      effects: !reduced,
+      smooth: reduced ? 0 : 0.6,
     });
     expect(wrapper).toHaveStyle({ position: reduced ? 'relative' : 'fixed' });
     if (reduced) expect(content?.style.transform).toBe('');

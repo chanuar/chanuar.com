@@ -1,4 +1,4 @@
-import type { MouseEvent } from 'react';
+import { useRef, type MouseEvent } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
@@ -14,16 +14,17 @@ export function PortfolioShell() {
   const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
+  const animateNextScroll = useRef(true);
   const homePath = location.pathname === '/en' ? '/en' : '/';
 
-  function scrollToAnchor(hash: string) {
+  function scrollToAnchor(hash: string, animate = true) {
     const target = document.getElementById(hash.slice(1));
     const smoother = ScrollSmoother.get();
     if (!smoother || (hash && !target)) return;
     const margin = target ? parseFloat(getComputedStyle(target).scrollMarginTop) || 0 : 0;
     smoother.scrollTo(
       target ? Math.max(0, smoother.offset(target, 'top top') - margin) : 0,
-      !matchMedia('(prefers-reduced-motion: reduce)').matches,
+      animate && !matchMedia('(prefers-reduced-motion: reduce)').matches,
     );
   }
 
@@ -45,8 +46,12 @@ export function PortfolioShell() {
       return;
     event.preventDefault();
     document.getElementById(anchor.hash.slice(1))?.focus({ preventScroll: true });
-    if (anchor.hash === location.hash) scrollToAnchor(anchor.hash);
-    else void navigate(anchor.hash, { preventScrollReset: true });
+    const animate = event.detail !== 0;
+    if (anchor.hash === location.hash) scrollToAnchor(anchor.hash, animate);
+    else {
+      animateNextScroll.current = animate;
+      void navigate(anchor.hash, { preventScrollReset: true });
+    }
   }
 
   useGSAP(() => {
@@ -57,15 +62,18 @@ export function PortfolioShell() {
       },
       ({ conditions }) => {
         ScrollSmoother.create({
-          smooth: conditions?.reduceMotion ? 0 : 1,
-          effects: !conditions?.reduceMotion,
+          smooth: conditions?.reduceMotion ? 0 : 0.6,
         });
       },
     );
   });
-  useGSAP(() => scrollToAnchor(location.hash), {
-    dependencies: [location.hash],
-  });
+  useGSAP(
+    () => {
+      scrollToAnchor(location.hash, animateNextScroll.current);
+      animateNextScroll.current = true;
+    },
+    { dependencies: [location.hash] },
+  );
   return (
     <>
       <a className="portfolio-skip" href="#main-content" onClick={handleAnchorClick}>
