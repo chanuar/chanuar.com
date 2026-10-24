@@ -774,12 +774,10 @@ body.portfolio-page * {
     width: 24px;
     height: 24px;
     object-fit: contain;
-    filter: grayscale(1);
-    opacity: 0.8;
   }
   .portfolio-technologies__list img[src*='/nextjs/'],
   .portfolio-technologies__list img[src*='/github/'] {
-    filter: grayscale(1) invert(1);
+    filter: invert(1);
   }
   .portfolio-technologies__list img[src*='/astro/'] {
     filter: invert(1) hue-rotate(180deg);
