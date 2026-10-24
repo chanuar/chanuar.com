@@ -58,7 +58,19 @@ it.each([
         'href',
         'https://sanriogangarchive.com',
       );
-      expect(screen.getByText(/DAM.*UOC/)).toBeVisible();
+      const experience = screen.getByRole('region', {
+        name: language === 'en' ? 'Professional experience' : 'Experiencia profesional',
+      });
+      expect(experience).toHaveTextContent('Bitbox / IKEA');
+      expect(experience).toHaveTextContent(
+        language === 'en' ? '2025 — present' : '2025 — actualidad',
+      );
+      const education = screen.getByRole('region', {
+        name: language === 'en' ? 'Education' : 'Formación',
+      });
+      expect(education).toHaveTextContent('UOC');
+      expect(education).toHaveTextContent('CIFP Villa de Agüimes');
+      expect(education).toHaveTextContent('2023–2025');
       expect(document.querySelectorAll('.portfolio-project__preview')).toHaveLength(3);
       expect(
         screen.getByRole('list', {

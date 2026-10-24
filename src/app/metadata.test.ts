@@ -3,12 +3,28 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
+import es from './locales/es.json';
+import en from './locales/en.json';
 
 function readEntry(relativePath: string) {
   return readFileSync(resolve(process.cwd(), relativePath), 'utf8');
 }
 
 describe('route entry metadata', () => {
+  it.each([
+    ['index.html', es.metadata.homeDescription],
+    ['en.html', en.metadata.homeDescription],
+  ])('keeps %s descriptions in sync with the client', (entry, description) => {
+    const html = readEntry(entry);
+    const descriptions = Array.from(
+      html.matchAll(
+        /<meta\s+(?:name|property)="(?:description|og:description|twitter:description)"\s+content="([^"]+)"/g,
+      ),
+      (match) => match[1],
+    );
+    expect(descriptions).toEqual([description, description, description]);
+  });
+
   it('ships portfolio metadata at the root', () => {
     const html = readEntry('index.html');
     expect(html).toContain('<title>Carlos Chanuar | Software Developer</title>');

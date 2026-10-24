@@ -38,6 +38,9 @@ describe('portfolio surfaces', () => {
       await user.click(screen.getByRole('link', { name: 'Saltar al contenido' }));
       expect(screen.getByRole('main')).toHaveFocus();
       expect(router.state.location.hash).toBe('#main-content');
+      await user.click(screen.getByRole('link', { name: 'Ver mi experiencia' }));
+      expect(router.state.location.hash).toBe('#experiencia');
+      expect(screen.getByRole('region', { name: 'Experiencia profesional' })).toHaveFocus();
     } finally {
       scroll.mockRestore();
     }
@@ -67,7 +70,9 @@ describe('portfolio surfaces', () => {
       'href',
       'https://menubox.chanuar.com',
     );
+    await user.click(screen.getByText('Dentro de Skinfolio: decisiones y desarrollo'));
     expect(screen.getByText(/collector en Node.js que sincroniza mi colección/)).toBeVisible();
+    await user.click(screen.getByText('Dentro de MenuBox: decisiones y desarrollo'));
     expect(screen.getByText(/horarios públicos de 14 restaurantes/)).toBeVisible();
     expect(screen.getByRole('link', { name: 'Ver código de MenuBox' })).toHaveAttribute(
       'href',
@@ -85,22 +90,74 @@ describe('portfolio surfaces', () => {
     );
     expect(screen.getByText('Web musical · Diseño y desarrollo')).toBeVisible();
     expect(screen.getByText('01 / Proyectos seleccionados')).toBeVisible();
-    expect(
-      screen.getByText(/ciclo superior de DAM.*Ingeniería Informática en la UOC/),
-    ).toBeVisible();
+    expect(screen.getByRole('heading', { name: 'Ingeniería Informática' })).toBeVisible();
     expect(screen.getByRole('heading', { name: '¿Hablamos?' })).toBeVisible();
     const technologies = screen.getByRole('list', { name: 'Tecnologías que utilizo' });
     expect(within(technologies).getAllByRole('listitem')).toHaveLength(18);
     expect(technologies.querySelectorAll('img')).toHaveLength(18);
     expect(within(technologies).getByText('Astro')).toBeInTheDocument();
-    const pause = screen.getByRole('checkbox', { name: 'Pausar animación de tecnologías' });
-    expect(pause).not.toBeChecked();
-    pause.focus();
-    await user.keyboard('[Space]');
-    expect(pause).toBeChecked();
-    expect(pause).toHaveAccessibleName('Pausar animación de tecnologías');
-    await user.keyboard('[Space]');
-    expect(pause).not.toBeChecked();
+    expect(screen.queryByRole('checkbox')).not.toBeInTheDocument();
+  });
+
+  it.each([
+    ['/', 'Experiencia profesional', 'Formación', 'Ver mi experiencia', 'actualidad'],
+    ['/en', 'Professional experience', 'Education', 'View my experience', 'present'],
+  ])(
+    'presents professional experience and education at %s',
+    async (path, title, educationTitle, link, present) => {
+      const user = userEvent.setup();
+      const router = renderPage(`${path}#experiencia`);
+      const experience = screen.getByRole('region', { name: title });
+      expect(within(experience).getByRole('heading', { name: 'Bitbox / IKEA' })).toBeVisible();
+      expect(within(experience).getByText('Software Developer')).toBeVisible();
+      expect(experience).toHaveTextContent(`2025 — ${present}`);
+      expect(within(experience).getAllByRole('listitem')).toHaveLength(6);
+      const projects = screen.getByRole('region', {
+        name: path === '/' ? 'Proyectos' : 'Projects',
+      });
+      expect(projects.compareDocumentPosition(experience)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+
+      expect(screen.getByRole('link', { name: link })).toHaveAttribute('href', '#experiencia');
+
+      const education = screen.getByRole('region', { name: educationTitle });
+      expect(within(education).getAllByRole('listitem')).toHaveLength(2);
+      expect(within(education).getByText('UOC')).toBeVisible();
+      expect(within(education).getByText('CIFP Villa de Agüimes')).toBeVisible();
+      expect(education).toHaveTextContent('2023–2025');
+
+      const language = screen.getByRole('link', { name: path === '/' ? 'EN' : 'ES' });
+      await user.click(language);
+      expect(router.state.location.hash).toBe('#experiencia');
+      expect(language).toHaveFocus();
+      expect(
+        screen.getByRole('heading', { name: path === '/' ? 'Education' : 'Formación' }),
+      ).toBeVisible();
+    },
+  );
+
+  it('links the desk previews to focusable projects and preserves expanded details across languages', async () => {
+    const user = userEvent.setup();
+    const router = renderPage('/');
+    await user.click(screen.getByRole('link', { name: '02 / MenuBox' }));
+    expect(router.state.location.hash).toBe('#menubox');
+    expect(document.getElementById('menubox')).toHaveFocus();
+    const project = document.getElementById('menubox');
+    if (!project) throw new Error('Missing MenuBox project');
+    const details = within(project).getByText('Dentro de MenuBox: decisiones y desarrollo');
+    const contribution = within(project).getByText(/horarios públicos de 14 restaurantes/);
+    expect(contribution).not.toBeVisible();
+    await user.click(details);
+    expect(contribution).toBeVisible();
+    expect(project.querySelector('.portfolio-project__preview')).toHaveAttribute(
+      'src',
+      '/projects/menubox-choose.webp',
+    );
+    await user.click(screen.getByRole('link', { name: 'EN' }));
+    expect(within(project).getByText('Inside MenuBox: decisions and development')).toBeVisible();
+    expect(
+      within(project).getByText(/^I built the ordering flow, administration tools/),
+    ).toBeVisible();
+    expect(project.querySelector('details')).toHaveAttribute('open');
   });
 
   it('uses the portfolio shell for unknown routes', () => {
@@ -148,10 +205,8 @@ describe('portfolio surfaces', () => {
     expect(await screen.findByText('Full-stack developer')).toBeVisible();
     expect(screen.getByText('Music website · Design and development')).toBeVisible();
     expect(screen.getByText('01 / Selected projects')).toBeVisible();
-    expect(
-      screen.getByText(/vocational qualification.*DAM.*Computer Engineering at UOC/),
-    ).toBeVisible();
-    expect(screen.getByRole('checkbox', { name: 'Pause technology animation' })).toBeVisible();
+    expect(screen.getByRole('heading', { name: 'Computer Engineering' })).toBeVisible();
+    expect(screen.getByRole('list', { name: 'Technologies I use' })).toBeVisible();
     expect(screen.getByText('All fields are required.')).toBeVisible();
     expect(screen.getByLabelText('Message')).toHaveAccessibleDescription(
       'Between 10 and 2000 characters.',

@@ -13,8 +13,7 @@
   },
   "home": {
     "role": "Full-stack developer",
-    "areas": "Interfaces · Data · Product",
-    "explore": "Explore work",
+    "explore": "View my experience",
     "projectsLabel": "01 / Selected projects",
     "inUse": "In use",
     "challenge": "The challenge",
@@ -27,7 +26,9 @@
       "response": "I built the React and TypeScript interface and a Node.js collector that syncs my collection from the League client to Supabase.",
       "pipelineLabel": "Technical decision",
       "pipeline": "I separated CommunityDragon's public catalogue from personal collection data, so skins and artwork can stay up to date without duplicating them in the database.",
-      "result": "A collection browsable by champion, ownership and rarity, with offers, chromas and an acquisition history."
+      "result": "A collection browsable by champion, ownership and rarity, with offers, chromas and an acquisition history.",
+      "visualTitle": "My League collection",
+      "summary": "Syncs my collection from the League client to browse skins, chromas, offers and acquisitions."
     },
     "menubox": {
       "subtitle": "Team orders · App + scraper",
@@ -57,27 +58,69 @@
           "caption": "Return to your confirmation in this browser and make changes while ordering is open.",
           "alt": "MenuBox confirmation for Alex with an €11.50 receipt and an Edit order button."
         }
-      }
+      },
+      "visualTitle": "Food orders for the team",
+      "summary": "Manages team orders and collects menus and opening hours from 14 restaurants with a scraper."
     },
     "sanriogang": {
       "subtitle": "Music website · Design and development",
       "challenge": "Give the group a space of their own to bring together their music, images, and memories.",
       "response": "A digital archive bringing together the group's songs, photographs, and fragments with a distinct identity.",
       "designLabel": "The design",
-      "design": "A collage aesthetic built around the group's logo, with galleries, video, and navigation adapted for mobile."
+      "design": "A collage aesthetic built around the group's logo, with galleries, video, and navigation adapted for mobile.",
+      "visualTitle": "SanrioGang’s music archive",
+      "summary": "A website bringing together the band’s songs, photographs and memories."
     },
     "technologiesLabel": "02 / Tools I work with",
     "technologiesTitle": "Technologies",
-    "pause": "Pause technology animation",
     "technologiesList": "Technologies I use",
-    "currentWork": "Software Developer @ IKEA",
-    "introduction": "I build web applications with React, TypeScript and Supabase, and automate data collection with Node.js and Python. My projects connect interfaces, APIs and databases to solve real problems.",
-    "education": "I work as a Software Developer at IKEA. After completing a higher vocational qualification in Multiplatform Application Development (DAM), I’m continuing my education in Computer Engineering at UOC.",
+    "currentWork": "Software Developer · Bitbox / IKEA",
+    "introduction": "I build applications, work with data and automate processes. At Bitbox / IKEA, I also build tools and development workflows with AI agents. Outside work, I make projects for my League collection, team food orders and a music archive.",
+    "experience": {
+      "title": "Professional experience",
+      "present": "present",
+      "introduction": "Since 2025, I have worked on internal applications, automation and data, while laying the foundations for AI agent adoption in the department.",
+      "support": {
+        "title": "AI-powered support analysis",
+        "description": "I built a tool to visualize helpdesk statistics, query the data through AI agents and automatically categorize tickets with LLMs. I designed its PostgreSQL data model, normalized to 5NF, and carried out database maintenance and management."
+      },
+      "agents": {
+        "title": "Development with agents",
+        "description": "I designed an agent harness and an agent-assisted development workflow, laying the foundations for their adoption in the department."
+      },
+      "data": {
+        "title": "Data processes at scale",
+        "description": "I refactored critical SQL queries for generating and sending statements to hundreds of thousands of users each month."
+      },
+      "quality": {
+        "title": "Quality built into development",
+        "description": "I introduced testing practices to prevent regressions and CI/CD with mandatory tests and formatting checks. I automated code conventions with Git Hooks and Husky."
+      },
+      "modernization": {
+        "title": "Application modernization",
+        "description": "I rebuilt an application with Next.js and React, updating the interface and fixing existing security vulnerabilities."
+      },
+      "backend": {
+        "title": "Backend renewal",
+        "description": "I worked with two other developers to rewrite an application's backend and central database, reducing years of technical debt and improving maintainability."
+      }
+    },
+    "education": {
+      "title": "Education",
+      "current": "In progress",
+      "degree": "Computer Engineering",
+      "context": "Studying remotely alongside my job.",
+      "diploma": "Higher vocational qualification in Multiplatform Application Development (DAM)"
+    },
     "contact": "Get in touch",
     "source": "View {{project}} source code",
-    "scroll": "Keep exploring",
-    "projectsIntro": "Personal projects, real problems, and room to experiment.",
-    "visitProject": "Explore project"
+    "projectsIntro": "Applications for my League collection, team food orders and a band’s archive.",
+    "visitProject": "Explore project",
+    "desk": "Personal projects",
+    "viewProjects": "View projects",
+    "projectsTitle": "Projects",
+    "projectDetails": "Inside {{project}}: decisions and development",
+    "technologiesIntro": "Tools I use at work and in my own projects."
   },
   "contactForm": {
     "requiredFields": "All fields are required.",
@@ -111,7 +154,7 @@
     "action": "Back to portfolio"
   },
   "metadata": {
-    "homeDescription": "Portfolio of Carlos Alberto Chanuar Martínez, full-stack developer.",
+    "homeDescription": "Portfolio of Carlos Alberto Chanuar Martínez, full-stack developer at Bitbox / IKEA. Experience in applications, data and AI, personal projects and education.",
     "notFoundTitle": "Page not found - chanuar.com",
     "notFoundDescription": "The page you are looking for does not exist."
   }
