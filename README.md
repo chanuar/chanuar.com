@@ -1,23 +1,47 @@
-# chanuar.com
+# chanuar.com 👋
 
-A band archive, a pharmacy floor plan, a League collection and a lunch order all share a front page. This is my portfolio, in [Spanish](https://chanuar.com/) and [English](https://chanuar.com/en).
+This is my portfolio, the place where I share what I build, how I approach software, and the kind of problems I enjoy solving.
 
-## Take a look
+I'm a full-stack developer who enjoys building different and interesting things, exploring new technologies n ideas and learning along the way. The website is available in Spanish and English.
 
-- [SanrioGang Archive](https://sanriogangarchive.com) collects the band's songs, photos and inside jokes.
-- [RTLS](https://github.com/chanuar/rtls-frontend) turns radio measurements into a route you can replay.
-- [Skinfolio](https://skinfolio.chanuar.com) shows which skins I own and which champions are one skin from completion.
-- [MenuBox](https://menubox.chanuar.com) keeps the team's lunch orders on one ticket.
+## ✨ What's inside
 
-## Run locally
+- A bit about me, what I'm working on, and my technical background.
+- Some of the products I've built, including their goals, architecture, and tech stack.
+- A contact form powered by EmailJS, with direct email as a fallback.
+- Canonical metadata, social previews, a sitemap, and structured data.
 
-Use Node 24.21.0 and npm.
+## 🚀 Projects
 
-```sh
-npm ci
-npm run dev
-```
+| Project       | What is it?                                                              | Repository                                                |
+| ------------- | ------------------------------------------------------------------------ | --------------------------------------------------------- |
+| **Skinfolio** | A League of Legends cosmetic collection and progression dashboard.       | [chanuar/skinfolio](https://github.com/chanuar/skinfolio) |
+| **MenuBox**   | A weekly team-ordering application with public and administrative flows. | [chanuar/MenuBox](https://github.com/chanuar/MenuBox)     |
 
-The site works locally with a direct email link. To enable the contact form, copy `.env.example` to `.env` and supply your EmailJS settings.
+Skinfolio and MenuBox now live in their own repositories and are developed and versioned independently.
 
-`npm test` runs the tests. `npm run build` type-checks the app and prerenders the Spanish, English and 404 pages. Deploy `dist/` to Cloudflare Pages, including `404.html` and `_redirects`.
+This repository is just for **chanuar.com**.
+
+## 🛠️ Tech stack
+
+- React 19
+- React Router 7
+- TypeScript
+- Vite
+- GSAP
+- i18next
+- EmailJS
+- Vitest
+- Testing Library
+- ESLint
+- Prettier
+- Husky
+- lint-staged
+
+## 📬 Say hi
+
+If you want to talk about a project, software, League of Legends, or just say hello:
+
+- [carlos@chanuar.com](mailto:carlos@chanuar.com)
+- [GitHub (@chanuar)](https://github.com/chanuar)
+- [LinkedIn (Carlos Chanuar Martínez)](https://www.linkedin.com/in/carlos-chanuar/)
