@@ -5,11 +5,10 @@
     "home": "chanuar.com, home",
     "navigation": "Main navigation",
     "projects": "Projects",
-    "stack": "Stack",
     "contact": "Contact",
-    "contactLabel": "03 / Contact",
     "contactTitle": "Let’s talk.",
-    "contactCopy": "Have a project in mind or want to know more about my work? I’d love to hear from you."
+    "experience": "Experience",
+    "writeMessage": "Write a message"
   },
   "home": {
     "role": "Full-stack developer",
@@ -69,13 +68,12 @@
       "designLabel": "The design",
       "design": "A collage aesthetic built around the group's logo, with galleries, video, and navigation adapted for mobile.",
       "visualTitle": "SanrioGang’s music archive",
-      "summary": "A website bringing together the band’s songs, photographs and memories."
+      "summary": "I brought SanrioGang’s songs, photos and memories together on one site. The band’s logo gave me the starting point for its collage design."
     },
     "technologiesLabel": "02 / Tools I work with",
     "technologiesTitle": "Technologies",
     "technologiesList": "Technologies I use",
-    "currentWork": "Software Developer · Bitbox / IKEA",
-    "introduction": "I build applications, work with data and automate processes. At Bitbox / IKEA, I also build tools and development workflows with AI agents. Outside work, I make projects for my League collection, team food orders and a music archive.",
+    "introduction": "At Bitbox / IKEA I build tools for the support team. On my own time, I’ve made an archive for a band, a catalogue for my League skins and an app for ordering lunch together.",
     "experience": {
       "title": "Professional experience",
       "present": "present",
@@ -114,13 +112,26 @@
     },
     "contact": "Get in touch",
     "source": "View {{project}} source code",
-    "projectsIntro": "Applications for my League collection, team food orders and a band’s archive.",
+    "projectsIntro": "A music archive, a live floor plan and two tools I use day to day.",
     "visitProject": "Explore project",
-    "desk": "Personal projects",
-    "viewProjects": "View projects",
+    "desk": "Project index",
     "projectsTitle": "Projects",
     "projectDetails": "Inside {{project}}: decisions and development",
-    "technologiesIntro": "Tools I use at work and in my own projects."
+    "technologiesIntro": "Tools I use at work and in my own projects.",
+    "featured": "Music archive",
+    "rtls": {
+      "subtitle": "Indoor positioning · Hardware and software",
+      "visualTitle": "From signal to floor plan",
+      "demo": "Simulated data shown",
+      "visit": "View interface on GitHub",
+      "source": "View positioning engine on GitHub",
+      "summary": "Where is a tag inside a pharmacy? Four ultra-wideband (UWB) anchors measure distances. The system turns them into a position on the floor plan and records the route for playback.",
+      "challenge": "Track an indoor tag and understand what happened when the signal dropped.",
+      "response": "The Python engine receives measurements over MQTT, estimates positions and stores them in PostgreSQL. FastAPI streams positions to the React interface over WebSocket.",
+      "pipelineLabel": "Technical decision",
+      "pipeline": "The map distinguishes fresh positions from stale ones. Playback preserves gaps in the history so a signal loss remains visible.",
+      "result": "Pick a period to replay a route, see a heatmap of its samples and inspect signal quality."
+    }
   },
   "contactForm": {
     "requiredFields": "All fields are required.",

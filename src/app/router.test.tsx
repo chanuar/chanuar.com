@@ -177,9 +177,9 @@ describe('application router', () => {
   });
 
   it.each([
-    ['home', '/', 'Carlos Chanuar | Software Developer', '#08090b', '/', 'es_ES'],
-    ['home', '/en', 'Carlos Chanuar | Software Developer', '#08090b', '/en', 'en_US'],
-    ['notFound', '/missing', 'Página no encontrada - chanuar.com', '#08090b', null, 'es_ES'],
+    ['home', '/', 'Carlos Chanuar | Software Developer', '#131319', '/', 'es_ES'],
+    ['home', '/en', 'Carlos Chanuar | Software Developer', '#131319', '/en', 'en_US'],
+    ['notFound', '/missing', 'Página no encontrada - chanuar.com', '#131319', null, 'es_ES'],
   ] as const)(
     'applies %s metadata at %s',
     async (page, path, title, theme, canonicalPath, locale) => {

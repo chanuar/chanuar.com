@@ -5,11 +5,10 @@
     "home": "chanuar.com, inicio",
     "navigation": "Navegación principal",
     "projects": "Proyectos",
-    "stack": "Stack",
     "contact": "Contacto",
-    "contactLabel": "03 / Contacto",
     "contactTitle": "¿Hablamos?",
-    "contactCopy": "Si tienes un proyecto en mente o quieres conocer más sobre mi trabajo, estaré encantado de leerte."
+    "experience": "Experiencia",
+    "writeMessage": "Escribir un mensaje"
   },
   "home": {
     "role": "Desarrollador full stack",
@@ -69,13 +68,12 @@
       "designLabel": "El diseño",
       "design": "Una estética de collage construida alrededor del logo del grupo, con galerías, vídeo y navegación adaptada a móvil.",
       "visualTitle": "Archivo musical de SanrioGang",
-      "summary": "Una web que reúne las canciones, fotografías y recuerdos del grupo."
+      "summary": "Reuní las canciones, fotos y recuerdos de SanrioGang en una web. El logo del grupo marcó el camino para diseñarla como un collage."
     },
     "technologiesLabel": "02 / Herramientas de trabajo",
     "technologiesTitle": "Tecnologías",
     "technologiesList": "Tecnologías que utilizo",
-    "currentWork": "Software Developer · Bitbox / IKEA",
-    "introduction": "Desarrollo aplicaciones, trabajo con datos y automatizo procesos. En Bitbox / IKEA también construyo herramientas y flujos de desarrollo con agentes de IA. Fuera del trabajo, hago proyectos para mi colección de League, los pedidos del equipo y un archivo musical.",
+    "introduction": "En Bitbox / IKEA desarrollo herramientas para el equipo de soporte. Por mi cuenta he hecho un archivo para un grupo de música, un catálogo para mis skins de League y una app para pedir la comida entre todos.",
     "experience": {
       "title": "Experiencia profesional",
       "present": "actualidad",
@@ -114,13 +112,26 @@
     },
     "contact": "Contactar",
     "source": "Ver código de {{project}}",
-    "projectsIntro": "Aplicaciones para mi colección de League, los pedidos del equipo y el archivo de un grupo de música.",
+    "projectsIntro": "Un archivo musical, un plano en tiempo real y dos herramientas que uso en mi día a día.",
     "visitProject": "Explorar proyecto",
-    "desk": "Proyectos personales",
-    "viewProjects": "Ver proyectos",
+    "desk": "Índice de proyectos",
     "projectsTitle": "Proyectos",
     "projectDetails": "Dentro de {{project}}: decisiones y desarrollo",
-    "technologiesIntro": "Herramientas que utilizo en el trabajo y en mis proyectos."
+    "technologiesIntro": "Herramientas que utilizo en el trabajo y en mis proyectos.",
+    "featured": "Archivo musical",
+    "rtls": {
+      "subtitle": "Localización en interiores · Hardware y software",
+      "visualTitle": "De la señal al plano",
+      "demo": "Captura con datos simulados",
+      "visit": "Ver interfaz en GitHub",
+      "source": "Ver motor de posicionamiento en GitHub",
+      "summary": "¿Dónde está una etiqueta dentro de una farmacia? Cuatro anclas de banda ultraancha (UWB) miden distancias. El sistema las convierte en una posición sobre el plano y guarda el recorrido para poder reproducirlo.",
+      "challenge": "Seguir una etiqueta en interiores e interpretar qué pasó cuando la señal se pierde.",
+      "response": "El motor en Python recibe las mediciones por MQTT, estima la posición y la guarda en PostgreSQL. FastAPI envía las posiciones a la interfaz React por WebSocket.",
+      "pipelineLabel": "Decisión técnica",
+      "pipeline": "El plano distingue las posiciones recientes de las antiguas. La reproducción conserva los huecos del historial para que una pérdida de señal se vea como tal.",
+      "result": "Se puede reproducir un periodo, ver el mapa de calor de sus muestras y consultar la calidad de la señal."
+    }
   },
   "contactForm": {
     "requiredFields": "Todos los campos son obligatorios.",

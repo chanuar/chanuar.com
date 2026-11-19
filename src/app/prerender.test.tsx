@@ -63,7 +63,7 @@ it.each([
       });
       expect(experience).toHaveTextContent('Bitbox / IKEA');
       expect(experience).toHaveTextContent(
-        language === 'en' ? '2025 — present' : '2025 — actualidad',
+        language === 'en' ? '2025 – present' : '2025 – actualidad',
       );
       const education = screen.getByRole('region', {
         name: language === 'en' ? 'Education' : 'Formación',
@@ -71,7 +71,7 @@ it.each([
       expect(education).toHaveTextContent('UOC');
       expect(education).toHaveTextContent('CIFP Villa de Agüimes');
       expect(education).toHaveTextContent('2023–2025');
-      expect(document.querySelectorAll('.portfolio-project__preview')).toHaveLength(3);
+      expect(document.querySelectorAll('.portfolio-project__preview')).toHaveLength(4);
       expect(
         screen.getByRole('list', {
           name: language === 'en' ? 'Technologies I use' : 'Tecnologías que utilizo',

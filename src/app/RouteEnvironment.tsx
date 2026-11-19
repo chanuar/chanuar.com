@@ -45,7 +45,7 @@ export function RouteEnvironment() {
     <>
       <title>{meta.title}</title>
       <meta name="description" content={meta.description} />
-      <meta name="theme-color" content="#08090b" />
+      <meta name="theme-color" content="#131319" />
       <meta property="og:title" content={meta.title} />
       <meta property="og:description" content={meta.description} />
       <meta property="og:type" content="website" />

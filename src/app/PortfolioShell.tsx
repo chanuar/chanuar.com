@@ -86,24 +86,9 @@ export function PortfolioShell() {
         </NavLink>
         <div className="portfolio-header__actions">
           <nav aria-label={t('shell.navigation')}>
-            <a href={`${homePath}#proyectos`}>
-              <span className="portfolio-nav__number" aria-hidden="true">
-                01
-              </span>
-              {t('shell.projects')}
-            </a>
-            <a href={`${homePath}#tecnologias`}>
-              <span className="portfolio-nav__number" aria-hidden="true">
-                02
-              </span>
-              {t('shell.stack')}
-            </a>
-            <a href={`${homePath}#contacto`}>
-              <span className="portfolio-nav__number" aria-hidden="true">
-                03
-              </span>
-              {t('shell.contact')}
-            </a>
+            <a href={`${homePath}#proyectos`}>{t('shell.projects')}</a>
+            <a href={`${homePath}#experiencia`}>{t('shell.experience')}</a>
+            <a href={`${homePath}#contacto`}>{t('shell.contact')}</a>
           </nav>
           <nav className="portfolio-language" aria-label={t('language')}>
             <NavLink
@@ -138,14 +123,15 @@ export function PortfolioShell() {
               tabIndex={-1}
             >
               <div className="portfolio-contact__intro">
-                <p className="portfolio-label">{t('shell.contactLabel')}</p>
                 <h2 id="contact-title">{t('shell.contactTitle')}</h2>
-                <p className="portfolio-contact__copy">{t('shell.contactCopy')}</p>
                 <a className="portfolio-contact__fallback" href="mailto:carlos@chanuar.com">
                   carlos@chanuar.com <span aria-hidden="true">↗</span>
                 </a>
               </div>
-              <ContactForm />
+              <details className="portfolio-contact__disclosure">
+                <summary>{t('shell.writeMessage')}</summary>
+                <ContactForm />
+              </details>
               <div className="portfolio-footer__meta">
                 <span suppressHydrationWarning>© {new Date().getFullYear()} Carlos Chanuar</span>
                 <a href="https://github.com/chanuar" rel="me">

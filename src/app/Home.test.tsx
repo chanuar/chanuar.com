@@ -50,7 +50,7 @@ describe('portfolio surfaces', () => {
     }
   });
 
-  it('presents the owner, contact links, and all three projects', async () => {
+  it('presents the owner, contact links, and all four projects', async () => {
     const user = userEvent.setup();
     renderPage('/');
 
@@ -64,7 +64,10 @@ describe('portfolio surfaces', () => {
       'https://www.linkedin.com/in/carlos-chanuar/',
     );
     expect(screen.getByRole('link', { name: 'Proyectos' })).toHaveAttribute('href', '/#proyectos');
-    expect(screen.getByRole('link', { name: 'Stack' })).toHaveAttribute('href', '/#tecnologias');
+    expect(screen.getByRole('link', { name: 'Experiencia' })).toHaveAttribute(
+      'href',
+      '/#experiencia',
+    );
     expect(screen.getByRole('link', { name: 'Contacto' })).toHaveAttribute('href', '/#contacto');
     expect(screen.getByRole('link', { name: 'Skinfolio' })).toHaveAttribute(
       'href',
@@ -93,6 +96,15 @@ describe('portfolio surfaces', () => {
       'https://sanriogangarchive.com',
     );
     expect(screen.getByText('Web musical · Diseño y desarrollo')).toBeVisible();
+    expect(screen.getAllByRole('article')[0]).toHaveAttribute('id', 'sanriogang');
+    expect(screen.getAllByRole('article')[1]).toHaveAttribute('id', 'rtls');
+    expect(screen.getByRole('link', { name: 'RTLS' })).toHaveAttribute(
+      'href',
+      'https://github.com/chanuar/rtls-frontend',
+    );
+    expect(
+      screen.getByRole('link', { name: 'Ver motor de posicionamiento en GitHub' }),
+    ).toHaveAttribute('href', 'https://github.com/chanuar/rtls-backend');
     expect(screen.getByText('01 / Proyectos seleccionados')).toBeVisible();
     expect(screen.getByRole('heading', { name: 'Ingeniería Informática' })).toBeVisible();
     expect(screen.getByRole('heading', { name: '¿Hablamos?' })).toBeVisible();
@@ -114,7 +126,7 @@ describe('portfolio surfaces', () => {
       const experience = screen.getByRole('region', { name: title });
       expect(within(experience).getByRole('heading', { name: 'Bitbox / IKEA' })).toBeVisible();
       expect(within(experience).getByText('Software Developer')).toBeVisible();
-      expect(experience).toHaveTextContent(`2025 — ${present}`);
+      expect(experience).toHaveTextContent(`2025 – ${present}`);
       expect(within(experience).getAllByRole('listitem')).toHaveLength(6);
       const projects = screen.getByRole('region', {
         name: path === '/' ? 'Proyectos' : 'Projects',
@@ -139,10 +151,10 @@ describe('portfolio surfaces', () => {
     },
   );
 
-  it('links the desk previews to focusable projects and preserves expanded details across languages', async () => {
+  it('links the project index to focusable projects and preserves expanded details across languages', async () => {
     const user = userEvent.setup();
     const router = renderPage('/');
-    await user.click(screen.getByRole('link', { name: '02 / MenuBox' }));
+    await user.click(screen.getByRole('link', { name: '04 / MenuBox' }));
     expect(router.state.location.hash).toBe('#menubox');
     expect(document.getElementById('menubox')).toHaveFocus();
     const project = document.getElementById('menubox');
@@ -211,6 +223,8 @@ describe('portfolio surfaces', () => {
     expect(screen.getByText('01 / Selected projects')).toBeVisible();
     expect(screen.getByRole('heading', { name: 'Computer Engineering' })).toBeVisible();
     expect(screen.getByRole('list', { name: 'Technologies I use' })).toBeVisible();
+    expect(screen.getByText('All fields are required.')).not.toBeVisible();
+    await user.click(screen.getByText('Write a message'));
     expect(screen.getByText('All fields are required.')).toBeVisible();
     expect(screen.getByLabelText('Message')).toHaveAccessibleDescription(
       'Between 10 and 2000 characters.',

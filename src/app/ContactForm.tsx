@@ -84,7 +84,7 @@ export function ContactForm() {
           <textarea
             id="contact-message"
             name="message"
-            rows={5}
+            rows={3}
             minLength={MESSAGE_MIN_LENGTH}
             maxLength={MESSAGE_MAX_LENGTH}
             aria-describedby="contact-message-hint"

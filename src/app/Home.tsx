@@ -24,6 +24,20 @@ const TECHNOLOGIES = [
 
 const PROJECTS = [
   {
+    id: 'sanriogang',
+    name: 'SanrioGang Archive',
+    url: 'https://sanriogangarchive.com',
+    source: null,
+    tags: ['Astro', 'TypeScript', 'HTML', 'CSS'],
+  },
+  {
+    id: 'rtls',
+    name: 'RTLS',
+    url: 'https://github.com/chanuar/rtls-frontend',
+    source: 'https://github.com/chanuar/rtls-backend',
+    tags: ['UWB', 'MQTT', 'Python', 'PostgreSQL', 'React'],
+  },
+  {
     id: 'skinfolio',
     name: 'Skinfolio',
     url: 'https://skinfolio.chanuar.com',
@@ -37,13 +51,6 @@ const PROJECTS = [
     source: 'https://github.com/chanuar/MenuBox',
     tags: ['React', 'TypeScript', 'Python', 'Playwright', 'Supabase'],
   },
-  {
-    id: 'sanriogang',
-    name: 'SanrioGang Archive',
-    url: 'https://sanriogangarchive.com',
-    source: null,
-    tags: ['Astro', 'TypeScript', 'HTML', 'CSS'],
-  },
 ] as const;
 
 export function Home() {
@@ -53,66 +60,49 @@ export function Home() {
   return (
     <main id="main-content" className="portfolio-main" tabIndex={-1}>
       <section className="portfolio-hero" aria-labelledby="portfolio-title">
-        <div className="portfolio-hero__meta">
-          <p className="portfolio-label">{t('home.role')}</p>
-        </div>
         <div className="portfolio-hero__layout">
           <div className="portfolio-hero__content">
+            <p className="portfolio-label portfolio-hero__role">{t('home.role')}</p>
             <h1 id="portfolio-title" aria-label="Carlos Alberto Chanuar Martínez">
               <span>Carlos</span>
-              <span>
-                Chanuar<span className="portfolio-hero__dot">.</span>
-              </span>
+              <span>Chanuar.</span>
             </h1>
             <p className="portfolio-hero__introduction">{t('home.introduction')}</p>
             <div className="portfolio-hero__links">
-              <a className="portfolio-button" href="#proyectos">
-                {t('home.viewProjects')} <span aria-hidden="true">↘</span>
+              <a className="portfolio-button" href="#experiencia">
+                {t('home.explore')} <span aria-hidden="true">↓</span>
               </a>
               <a className="portfolio-text-link" href="#contacto">
                 {t('home.contact')} <span aria-hidden="true">↗</span>
               </a>
             </div>
           </div>
-          <div className="portfolio-desk">
-            <p className="portfolio-desk__label">
-              <span aria-hidden="true">✳</span> {t('home.desk')}
-            </p>
-            <a className="portfolio-desk__piece portfolio-desk__piece--skinfolio" href="#skinfolio">
+          <a href="#sanriogang" className="portfolio-record">
+            <span className="portfolio-record__art">
               <img
-                src="/projects/skinfolio.jpg"
+                src="/projects/sanriogang.jpg"
                 alt=""
                 width="1440"
                 height="960"
                 fetchPriority="high"
               />
+            </span>
+            <span className="portfolio-record__caption">
+              <span className="portfolio-label">{t('home.featured')}</span>{' '}
               <span>
-                01 / Skinfolio <span aria-hidden="true">↗</span>
+                SanrioGang Archive <span aria-hidden="true">↘</span>
               </span>
-            </a>
-            <a className="portfolio-desk__piece portfolio-desk__piece--menubox" href="#menubox">
-              <img src="/projects/menubox-confirm.webp" alt="" width="464" height="976" />
-              <span>
-                02 / MenuBox <span aria-hidden="true">↗</span>
-              </span>
-            </a>
-            <a
-              className="portfolio-desk__piece portfolio-desk__piece--sanriogang"
-              href="#sanriogang"
-            >
-              <img src="/projects/sanriogang.jpg" alt="" width="1440" height="960" />
-              <span>
-                03 / SanrioGang <span aria-hidden="true">↗</span>
-              </span>
-            </a>
-          </div>
-        </div>
-        <div className="portfolio-hero__footnote">
-          <p className="portfolio-hero__availability">{t('home.currentWork')}</p>
-          <a className="portfolio-text-link" href="#experiencia">
-            {t('home.explore')} <span aria-hidden="true">↗</span>
+            </span>
           </a>
         </div>
+        <nav className="portfolio-index" aria-label={t('home.desk')}>
+          {PROJECTS.map((project, index) => (
+            <a key={project.id} href={`#${project.id}`}>
+              <span className="portfolio-label">0{index + 1} /</span> {project.name}
+              <span aria-hidden="true">↘</span>
+            </a>
+          ))}
+        </nav>
       </section>
 
       <section
@@ -154,10 +144,13 @@ export function Home() {
                 </div>
                 <div className="portfolio-project__media">
                   <div className="portfolio-project__media-copy">
-                    <span className="portfolio-project__status">{t('home.inUse')}</span>
+                    <span className="portfolio-project__status">
+                      {t(project.id === 'rtls' ? 'home.rtls.demo' : 'home.inUse')}
+                    </span>
                     <p>{t(`home.${project.id}.visualTitle`)}</p>
                     <span className="portfolio-project__visit">
-                      {t('home.visitProject')} <span aria-hidden="true">↗</span>
+                      {t(project.id === 'rtls' ? 'home.rtls.visit' : 'home.visitProject')}{' '}
+                      <span aria-hidden="true">↗</span>
                     </span>
                   </div>
                   <div className="portfolio-project__screens">
@@ -244,7 +237,10 @@ export function Home() {
                     </button>
                   )}
                   <a className="portfolio-project__source" href={project.source}>
-                    {t('home.source', { project: project.name })} <span aria-hidden="true">↗</span>
+                    {t(project.id === 'rtls' ? 'home.rtls.source' : 'home.source', {
+                      project: project.name,
+                    })}{' '}
+                    <span aria-hidden="true">↗</span>
                   </a>
                 </div>
               )}
@@ -308,7 +304,7 @@ export function Home() {
         <div className="portfolio-experience__layout">
           <div className="portfolio-experience__position">
             <p className="portfolio-experience__dates">
-              <time dateTime="2025">2025</time> — {t('home.experience.present')}
+              <time dateTime="2025">2025</time> – {t('home.experience.present')}
             </p>
             <h3>Bitbox / IKEA</h3>
             <p>Software Developer</p>
@@ -316,7 +312,7 @@ export function Home() {
           <p className="portfolio-experience__intro">{t('home.experience.introduction')}</p>
         </div>
         <ul className="portfolio-experience__achievements">
-          {(['support', 'agents', 'data', 'quality', 'modernization', 'backend'] as const).map(
+          {(['data', 'support', 'agents', 'quality', 'modernization', 'backend'] as const).map(
             (achievement) => (
               <li key={achievement}>
                 <h4>{t(`home.experience.${achievement}.title`)}</h4>
